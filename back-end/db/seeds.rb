@@ -16,12 +16,12 @@ Message.destroy_all
 @Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "arias.joseph.a@gmail.com", username: "jarias3")
 @Liz = User.create!(first_name: "Liz", last_name: "Orellana", email: "liz@gmail.com", username: "liz3")
 
-@Property1 = Property.create!(address: "123 test st", city: "bristow", state: "Virginia", description: "It is a very beautiful place", perks: "Alot of trees, ocean view, cool people around", notes: "no pets, no smoking", price: 80, user_id: @Joseph)
+@Property1 = Property.create!(address: "123 test st", city: "bristow", state: "Virginia", description: "It is a very beautiful place", perks: "Alot of trees, ocean view, cool people around", notes: "no pets, no smoking", price: 80, user_id: @Joseph.id)
 
-@Lease1 = Lease.create!(owner_id: @Joseph, renter_id: @Liz, property_id: @Property1 )
+@Lease1 = Lease.create!(checkin: DateTime.new(2018, 6, 22), checkout: DateTime.new(2018, 9, 22), rules: "Only 5 days stay", total_price: 300, owner_id: @Joseph.id, renter_id: @Liz.id, property_id: @Property1.id)
 
-@Review1 = Review.create!(review_content: "I had a great time", rating: 5, reviewer_id: @Liz, reviewee_id: @Joseph)
+@Review1 = Review.create!(review_content: "I had a great time", rating: 5, reviewer_id: @Liz.id, reviewee_id: @Joseph.id, property_id: @Property1.id)
 
-Message1 = Message.create!(subject: "is this still available", content: "How much will it be for a week?", sender_id: @Liz, recipient_id: @Joseph)
+@Message1 = Message.create!(subject: "is this still available", content: "How much will it be for a week?", sender_id: @Liz.id, recipient_id: @Joseph.id)
 
 

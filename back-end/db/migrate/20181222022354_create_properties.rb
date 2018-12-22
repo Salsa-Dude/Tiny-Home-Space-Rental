@@ -8,8 +8,8 @@ class CreateProperties < ActiveRecord::Migration[5.2]
       t.text :description
       t.text :perks
       t.text :notes
-      t.decimal :price
-      t.belongs_to :user
+      t.float :price
+      t.integer :user_id
       t.timestamps
     end
   end
