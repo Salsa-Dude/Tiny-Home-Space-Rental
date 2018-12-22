@@ -13,8 +13,8 @@ Review.destroy_all
 Message.destroy_all
 
 
-@Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "arias.joseph.a@gmail.com", username: "jarias3")
-@Liz = User.create!(first_name: "Liz", last_name: "Orellana", email: "liz@gmail.com", username: "liz3")
+@Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "arias.joseph.a@gmail.com", password: "123", username: "jarias3", bio: "I like soccer and tacos")
+@Liz = User.create!(first_name: "Liz", last_name: "Orellana", email: "liz@gmail.com", password: "123", username: "liz3", bio: "I like salsa dancing")
 
 @Property1 = Property.create!(address: "123 test st", city: "bristow", state: "Virginia", description: "It is a very beautiful place", perks: "Alot of trees, ocean view, cool people around", notes: "no pets, no smoking", price: 80, user_id: @Joseph.id)
 
