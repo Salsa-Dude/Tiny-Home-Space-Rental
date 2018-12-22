@@ -4,8 +4,8 @@ class User < ApplicationRecord
   
   has_many :reviews, class_name: "review", foreign_key: reviewer_id
   has_many :reviews, class_name: "review", foreign_key: reviewee_id
-  
+
   has_many :properties
   has_many :leases, foreign_key: owner_id #owner
-  has_many :rentals, class_name: "lease", foreign_key: rental_id #renter
+  has_many :rentals, class_name: "lease", foreign_key: renter_id #renter
 end
