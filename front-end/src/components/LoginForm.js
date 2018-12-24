@@ -17,7 +17,7 @@ class LoginForm extends Component {
   };
 
   handleLoginSubmit = () => {
-    fetch('http://localhost:3000/api/v1/login', {
+    fetch(`http://localhost:3000/api/v1/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -33,7 +33,9 @@ class LoginForm extends Component {
         alert('Incorrect')
       } else {
         // set the Current User
+        console.log(data)
         this.props.setCurrentUser(data.user_info)
+        localStorage.setItem('token', data.token)
       }
     })
   }
