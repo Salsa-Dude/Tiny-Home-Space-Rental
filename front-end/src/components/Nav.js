@@ -8,7 +8,7 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
     localStorage.clear()
   }
   return (
-    <Menu pointing secondary>
+    <Menu pointing secondary size="huge">
       {logged_in ? (
         <Fragment>
           <Menu.Item
@@ -16,6 +16,21 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
             to="/profile"
             name="Home"
             active={pathname === "/profile"}
+          />
+          <Menu.Item
+            name='Messages'
+            
+            // onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='Trips'
+            
+            // onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='Rentals'
+            
+            // onClick={this.handleItemClick}
           />
           <Menu.Menu position="right">
             <Menu.Item to="/logout" name="Logout" onClick={logout} />
@@ -34,3 +49,5 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
 };
 
 export default withRouter(Nav);
+
+

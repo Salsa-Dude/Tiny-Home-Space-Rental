@@ -1,0 +1,24 @@
+.greeting-heading {
+ margin-left: 8%;
+ margin-top: 5%;
+}
+
+.unique-heading {
+  margin-top: 5%;
+  position: relative;
+}
+
+.unique-heading h2 {
+  margin-left: 8%;
+  padding-bottom: 10px;
+}
+
+.unique-heading .cards {
+  
+  position: absolute;
+  width: 80%;
+  
+  left: 50%;
+  transform: translate(-50%, 0);
+ 
+}

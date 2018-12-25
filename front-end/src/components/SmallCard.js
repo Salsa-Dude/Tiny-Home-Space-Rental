@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+import { Image } from 'semantic-ui-react'
+import '../smallCard.css'
+
+
+class SmallCard extends Component {
+  render() {
+    let tinyParkingObj = this.props.tinyhome()
+    return (
+      <div className="small-card">
+        <Image src={tinyParkingObj.img} size='small' floated='left' />
+        <h3>{tinyParkingObj.heading}</h3>
+
+      </div>
+    )
+  }
+}
+
+export default SmallCard
