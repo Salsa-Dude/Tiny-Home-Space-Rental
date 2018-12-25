@@ -20,8 +20,6 @@ class Api::V1::UsersController < ApplicationController
   #   end
   # end
 
-  private
-
   def index 
     @users = User.all 
     render json: @users

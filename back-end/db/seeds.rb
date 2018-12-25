@@ -16,7 +16,9 @@ Message.destroy_all
 @Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "arias.joseph.a@gmail.com", password: "123", username: "jarias3", bio: "I like soccer and tacos")
 @Liz = User.create!(first_name: "Liz", last_name: "Orellana", email: "liz@gmail.com", password: "123", username: "liz3", bio: "I like salsa dancing")
 
-@Property1 = Property.create!(address: "123 test st", city: "bristow", state: "Virginia", description: "It is a very beautiful place", perks: "Alot of trees, ocean view, cool people around", notes: "no pets, no smoking", price: 80, user_id: @Joseph.id)
+@Property1 = Property.create!(address: "123 test st", city: "Bristow", state: "Virginia", description: "It is a very beautiful place", perks: "Alot of trees, cool people around", notes: "no pets, no smoking", price: 80, user_id: @Joseph.id)
+
+@Property2 = Property.create!(address: "567 almond st", city: "Sterling", state: "California", description: "Right beside the ocean, and great view of the city", perks: "Ocean view, running trail", notes: "no pets, no smoking", price: 150, user_id: @Joseph.id)
 
 @Lease1 = Lease.create!(checkin: DateTime.new(2018, 6, 22), checkout: DateTime.new(2018, 9, 22), rules: "Only 5 days stay", total_price: 300, owner_id: @Joseph.id, renter_id: @Liz.id, property_id: @Property1.id)
 
