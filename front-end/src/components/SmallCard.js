@@ -7,7 +7,7 @@ class SmallCard extends Component {
   render() {
     let tinyParkingObj = this.props.tinyhome()
     return (
-      <div className="small-card">
+      <div className="small-card" onClick={() => this.props.fetchParkingInfo()}>
         <Image src={tinyParkingObj.img} size='small' floated='left' />
         <h3>{tinyParkingObj.heading}</h3>
 

@@ -30,21 +30,28 @@ class Home extends Component {
     return vanHomeParking
   }
 
+  fetchTinyParking = () => {
+    console.log('fetching')
+  }
+
 
   render() {
     const { activeItem } = this.state
     const homeCard1 = {
       img: 'https://i.ytimg.com/vi/ZgJILhBvmxU/maxresdefault.jpg',
-      header: 'Entire Space',
-      desc: 'Daniel is a comedian living in Nashville.'
+      header: 'Tiny house communities',
+      desc: 'Tiny home communities ranging from artsy urban villages to backyard coops are popping up from coast to coast.'
     } 
     const homeCard2 = {
       img: 'http://www.lovethispic.com/uploaded_images/110826-Vintage-Van.jpg',
-      header: 'Entire Space',
-      desc: 'Daniel is a comedian living in Nashville.'
+      header: 'Van Life',
+      desc: 'Living in a Van Down by the Beach '
     } 
-   
-    const src3 = "https://www.gulftolakesales.com/wp-content/uploads/2015/07/tiny-house-3.jpg"
+    const homeCard3 = {
+      img: 'https://www.gulftolakesales.com/wp-content/uploads/2015/07/tiny-house-3.jpg',
+      header: 'Love of travel',
+      desc: 'The drive to explore the world and take your tiny home with you '
+    }
     
     return (
       this.props.currentUser ? (
@@ -52,7 +59,7 @@ class Home extends Component {
         <div className="greeting-heading">
           <h2>What can we help you find, {this.props.currentUser.first_name}? </h2>
           <div className="helpBox">
-            <SmallCard tinyhome={this.tinyParkingInfo} />
+            <SmallCard tinyhome={this.tinyParkingInfo} fetchParkingInfo={this.fetchTinyParking} />
             <SmallCard tinyhome={this.vanParkingInfo} />
           </div>
         </div>
@@ -61,6 +68,7 @@ class Home extends Component {
           <Card.Group itemsPerRow={3}>
             <HomeCard homeCard={homeCard1} />
             <HomeCard homeCard={homeCard2} />
+            <HomeCard homeCard={homeCard3} />
           </Card.Group>
         </div>
         </Fragment>

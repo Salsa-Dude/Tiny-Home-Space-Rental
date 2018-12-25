@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
+import '../nav.css'
 
 const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
   let logout =  () => {
