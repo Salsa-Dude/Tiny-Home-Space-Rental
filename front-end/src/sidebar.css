@@ -1,7 +1,7 @@
 .ui.visible.left.overlay.sidebar {
   position: absolute;
   top: 50px;
-  width: 230px;
+  width: 240px;
   margin-top: -10px;
   box-shadow: none;
   border-top: none;
@@ -26,7 +26,28 @@
   font-size: 17px;
 }
 
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: #21A9F3;
+}
 
+.state-item {
+ text-align: left;
+}
+
+.state-item span {
+  display: block;
+  text-align: center;
+}
+
+.location-span {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.ui.scrolling.dropdown {
+ margin-left: 20px;
+ margin-top: 20px;
+}
 
 
 
