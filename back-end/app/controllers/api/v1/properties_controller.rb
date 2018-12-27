@@ -3,4 +3,8 @@ class Api::V1::PropertiesController < ApplicationController
     @properties = Property.all
     render json: @properties
   end
+
+  def test 
+    
+  end
 end

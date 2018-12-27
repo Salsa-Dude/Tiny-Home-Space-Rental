@@ -1,0 +1,47 @@
+
+
+.grid-box {
+  margin-top: 5%;
+}
+
+.search-greeting {
+  margin-left: 285px;
+  margin-top: 5%;
+}
+
+.search-info {
+  display: flex;
+}
+
+.search-info .small-card {
+  margin-right: 4%;
+}
+
+.search-info .small-card {
+  border: solid 1px lightgray;
+  height: 60px;  
+  width: 280px;
+  margin-top: 2%;
+  -webkit-box-shadow: 10px 10px 28px -6px rgba(184,177,184,1);
+  -moz-box-shadow: 10px 10px 28px -6px rgba(184,177,184,1);
+  box-shadow: 10px 10px 28px -6px rgba(184,177,184,1);
+}
+
+.search-info .small-card h3 {
+  padding-right: 30px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.search-card {
+  margin-right: 18px;
+  margin-bottom: 30px;
+  width: 260px;
+}
+
+.grid-box {
+  margin-top: 5%;
+}
+
+
+

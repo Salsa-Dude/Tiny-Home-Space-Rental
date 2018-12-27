@@ -1,0 +1,32 @@
+.ui.visible.left.overlay.sidebar {
+  position: absolute;
+  top: 50px;
+  width: 230px;
+  margin-top: -10px;
+  box-shadow: none;
+  border-top: none;
+}
+
+
+
+.setting-item {
+  padding: 10px 0px 10px 0px;
+}
+
+.setting-item span {
+  font-size: 18px;
+}
+
+.price-item {
+  padding: 10px 0px 10px 0px;
+}
+
+.sidebar-heading {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+
+
+
+

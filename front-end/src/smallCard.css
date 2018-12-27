@@ -1,22 +1,30 @@
 
-.small-card {
+.helpBox {
+  display: flex;
+}
+
+.helpBox .small-card {
+  margin-left: 4%;
+}
+
+.helpBox .small-card {
   border: solid 1px lightgray;
-  height: 100px;
-  width: 400px;
+  height: 100px;  
+  width: 340px;
   margin-top: 2%;
   -webkit-box-shadow: 10px 10px 28px -6px rgba(184,177,184,1);
   -moz-box-shadow: 10px 10px 28px -6px rgba(184,177,184,1);
   box-shadow: 10px 10px 28px -6px rgba(184,177,184,1);
 }
 
-.helpBox {
-  display: flex;
-  
+.helpBox .small-card h3 {
+  padding-right: 30px;
+  text-align: center;
 }
 
-.helpBox .small-card {
-  margin-left: 3%;
-}
+
+
+
 
 
 

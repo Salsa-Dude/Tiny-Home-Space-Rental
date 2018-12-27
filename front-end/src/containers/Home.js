@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import SmallCard from '../components/SmallCard'
 import HomeCard from '../components/HomeCard'
 import {Card, Icon, Image  } from 'semantic-ui-react'
@@ -7,36 +8,46 @@ import '../homepage.css'
 
 
 class Home extends Component {
-  constructor() {
-    super()
+  // _isMounted = false;
+
+  constructor(props) {
+    super(props)
     this.state = {
       activeItem: 'home'
     }
   }
 
-  tinyParkingInfo = () => {
-    let tinyHomeParking = {
-      img: 'https://westernnews.media.clients.ellingtoncms.com/img/photos/2016/10/16/tiny_house_wheels_t715.jpg?529764a1de2bdd0f74a9fb4f856b01a9d617b3e9',
-      heading: 'Tiny House Parking'
-    }
-    return tinyHomeParking
-  }
-
-  vanParkingInfo = () => {
-    let vanHomeParking = {
-      img: 'https://i.ytimg.com/vi/cI72hB_X9Rs/maxresdefault.jpg',
-      heading: 'Van Parking'
-    }
-    return vanHomeParking
-  }
-
   fetchTinyParking = () => {
-    console.log('fetching')
+    this.context.router.history.push(`/properties`)
+  }
+
+  
+
+  componentWillUnmount() {
+    // this._isMounted = false;
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
 
   render() {
     const { activeItem } = this.state
+
+    const tinyParkingInfo =  {
+      img: 'https://westernnews.media.clients.ellingtoncms.com/img/photos/2016/10/16/tiny_house_wheels_t715.jpg?529764a1de2bdd0f74a9fb4f856b01a9d617b3e9',
+      heading: 'Tiny House Parking',
+      tiny: false
+    }
+
+    const vanParkingInfo = {
+      img: 'https://i.ytimg.com/vi/cI72hB_X9Rs/maxresdefault.jpg',
+      heading: 'Van Parking',
+      tiny: false
+
+    }
+    
     const homeCard1 = {
       img: 'https://i.ytimg.com/vi/ZgJILhBvmxU/maxresdefault.jpg',
       header: 'Tiny house communities',
@@ -59,8 +70,8 @@ class Home extends Component {
         <div className="greeting-heading">
           <h2>What can we help you find, {this.props.currentUser.first_name}? </h2>
           <div className="helpBox">
-            <SmallCard tinyhome={this.tinyParkingInfo} fetchParkingInfo={this.fetchTinyParking} />
-            <SmallCard tinyhome={this.vanParkingInfo} />
+            <SmallCard tinyhome={tinyParkingInfo} fetchParkingInfo={this.fetchTinyParking} />
+            <SmallCard tinyhome={vanParkingInfo} />
           </div>
         </div>
         <div className="unique-heading">

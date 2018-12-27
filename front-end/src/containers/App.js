@@ -3,13 +3,16 @@ import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import Home from './Home';
 import LoginForm from '../components/LoginForm';
 import Nav from '../components/Nav';
+import SearchContainer from './SearchContainer'
+
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
      currentUser: null,
-     loading: true
+     loading: true,
+     allTinyPlaces: [] 
     }
   }
 
@@ -34,6 +37,15 @@ class App extends Component {
         loading: false
       })
     }
+    fetch(`http://localhost:3000/api/v1/properties`)
+      .then(res => res.json())
+      .then(data => {
+        // if(this._isMounted) {
+          this.setState({
+            allTinyPlaces: data
+          })
+        // }
+      })
   }
 
   setCurrentUser = (userObj) => {
@@ -42,14 +54,21 @@ class App extends Component {
     })
   }
 
+  allTinyPlaces = (data) => {
+    this.setState({
+      allTinyPlaces: data
+    })
+  }
+
   render() {
     return (
       <Fragment>
         <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
         <Switch>
+          <Route exact path="/properties" render={() => <SearchContainer allTinyPlaces={this.state.allTinyPlaces} />} />
           <Route exact path="/" render={() => <Redirect to="/profile" />} />
           <Route exact path="/profile" render={ () => 
-            <Home currentUser={this.state.currentUser} />}  
+            <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
           <Route exact path="/login" render={ () => this.state.loading ? null : (this.state.currentUser ?
           <Redirect to="/profile" />  :  <LoginForm setCurrentUser={this.setCurrentUser} /> )}
