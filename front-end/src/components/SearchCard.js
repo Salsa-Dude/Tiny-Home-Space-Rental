@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Rating } from 'semantic-ui-react'
 
 import '../searchContainer.css'
 
@@ -7,6 +7,11 @@ import '../searchContainer.css'
 class SearchCard extends Component {
   
   render() {
+    let rating;
+    if(this.props.place.reviews.length >= 1) {
+      rating = this.props.place.reviews[0].rating
+    }
+
     return (
       <div className="search-card">
         <Card>
@@ -16,6 +21,7 @@ class SearchCard extends Component {
             <Card.Meta>{this.props.place.state}</Card.Meta>
             <Card.Meta>{this.props.place.city}</Card.Meta>
             <Card.Description>${this.props.place.price} per week</Card.Description>
+            { rating ? <Rating icon='star' defaultRating={rating} maxRating={5} disabled /> : null }
           </Card.Content>
         </Card>
       </div>
