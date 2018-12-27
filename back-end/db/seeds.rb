@@ -17,7 +17,6 @@ Message.destroy_all
 @Liz = User.create!(first_name: "Liz", last_name: "Orellana", email: "liz@gmail.com", password: "123", username: "liz3", bio: "I like salsa dancing")
 @Manuel = User.create!(first_name: "Manuel", last_name: "Arias", email: "manuel@gmail.com", password: "123", username: "manuel3", bio: "I like playing my guitar and playing fornite")
 @Diana = User.create!(first_name: "Diana", last_name: "Ventura", email: "diana@gmail.com", password: "123", username: "diana3", bio: "Student and Mom of 4 dogs")
-@Diana = User.create!(first_name: "Diana", last_name: "Ventura", email: "diana@gmail.com", password: "123", username: "diana3", bio: "Student and Mom of 4 dogs")
 @Lina = User.create!(first_name: "Lina", last_name: "Medrano", email: "lina@gmail.com", password: "123", username: "lina3", bio: "Mother, Dancer and Student")
 @Bianca = User.create!(first_name: "Bianca", last_name: "Alba", email: "bianca@gmail.com", password: "123", username: "bianca3", bio: "I love to travel and explore new hobbies")
 @Emerson = User.create!(first_name: "Emerson", last_name: "Morales", email: "emerson@gmail.com", password: "123", username: "emerson3", bio: "Accountant by day and DJ at night")
