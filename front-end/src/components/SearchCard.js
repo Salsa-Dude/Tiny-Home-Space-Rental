@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Card, Image, Rating } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
+
+import { Card, Image, Rating } from 'semantic-ui-react'
 import '../searchContainer.css'
 
 
@@ -13,6 +15,7 @@ class SearchCard extends Component {
     }
 
     return (
+      <Link to={`/properties/${this.props.place.id}`}>
       <div className="search-card">
         <Card>
           <Image src={this.props.place.image} />
@@ -25,6 +28,7 @@ class SearchCard extends Component {
           </Card.Content>
         </Card>
       </div>
+      </Link>
       
     )
   }

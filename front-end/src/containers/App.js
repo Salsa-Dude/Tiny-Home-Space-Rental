@@ -4,6 +4,7 @@ import Home from './Home';
 import LoginForm from '../components/LoginForm';
 import Nav from '../components/Nav';
 import SearchContainer from './SearchContainer'
+import PropertyDetails from './PropertyDetails'
 
 
 class App extends Component {
@@ -65,8 +66,16 @@ class App extends Component {
       <Fragment>
         <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
         <Switch>
-          <Route exact path="/properties" render={() => <SearchContainer allTinyPlaces={this.state.allTinyPlaces} />} />
           <Route exact path="/" render={() => <Redirect to="/profile" />} />
+          <Route exact path="/properties" render={() => <SearchContainer allTinyPlaces={this.state.allTinyPlaces} />} />
+          <Route exact path='/properties/:id' render={(props) => {
+            let propertyId = props.match.params.id
+            if(this.state.allTinyPlaces.length > 1) {
+              return <PropertyDetails property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
+            } else {
+              return null;
+            }
+          }} />
           <Route exact path="/profile" render={ () => 
             <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
