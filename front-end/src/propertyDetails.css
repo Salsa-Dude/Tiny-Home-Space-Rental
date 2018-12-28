@@ -1,0 +1,64 @@
+
+
+.test {
+  margin: 0px auto;
+  height: 550px;
+  overflow: hidden;
+}
+
+.property-name-box {
+  background-color: #F2F2F2;
+  text-align: center;
+  margin-left: 3%;
+ 
+}
+
+.inner-property-name-box {
+  margin-top: 15%;
+}
+
+.property-name-box h1 {
+  font-size: 40px;
+  width: 80%; 
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.property-image {
+  width: 100%;
+}
+
+.small-space {
+  height: 60px;
+}
+
+.property-info-container {
+  text-align: center;
+}
+
+.property-description {
+  font-size: 18px;
+  width: 55%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.ui.feed>.event>.label {
+ width: 5.0em !important;
+}
+
+.k {
+}
+
+.ki iframe {
+  width: 80%;
+  height: 300px;
+}
+
+.reviews-container {
+  text-align: left;
+}
+
+.review-div {
+  margin-top: 10%;
+}
