@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 
-import { Card, Image, Rating, Grid, Segment, Feed, GridColumn, Form, Button } from 'semantic-ui-react'
+import { Card, Image, Rating, Grid, Segment, Feed, GridColumn, Form, Button, Label } from 'semantic-ui-react'
 import '../propertyDetails.css'
 
 
@@ -50,10 +50,16 @@ class PropertyDetails extends Component {
 
   render() {
     let rating;
+    let reviewerName;
    
     if(this.props.property.reviews.length >= 1) {
       rating = this.props.property.reviews[0].rating
     }
+    
+    this.props.allUsers.find(user => {
+      if (user.id === this.props.property.reviews[0].reviewer_id)
+        reviewerName = user.first_name
+    })
 
     return (
       <Fragment>
@@ -144,7 +150,10 @@ class PropertyDetails extends Component {
         </Grid.Column>
         <Grid.Column className="reviews-container" width={6}>
         <div className="review-div">
-        <p>{this.props.property.reviews[0].review_content}</p>
+        <p>{this.props.property.reviews[0].review_content} -  <Label as='a' image>
+      <img src='https://react.semantic-ui.com/images/avatar/small/stevie.jpg' />
+      {reviewerName}
+    </Label> </p>
         </div>
        
         <Rating icon='star' defaultRating={rating} maxRating={5} disabled /> 

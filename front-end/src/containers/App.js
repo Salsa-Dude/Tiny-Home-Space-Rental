@@ -14,6 +14,7 @@ class App extends Component {
      currentUser: null,
      loading: true,
      allTinyPlaces: [],
+     allUsers: []
     }
   }
 
@@ -44,6 +45,15 @@ class App extends Component {
         // if(this._isMounted) {
           this.setState({
             allTinyPlaces: data
+          })
+        // }
+      })
+      fetch(`http://localhost:3000/api/v1/users`)
+      .then(res => res.json())
+      .then(data => {
+        // if(this._isMounted) {
+          this.setState({
+            allUsers: data
           })
         // }
       })
@@ -84,7 +94,7 @@ class App extends Component {
           <Route exact path='/properties/:id' render={(props) => {
             let propertyId = props.match.params.id
             if(this.state.allTinyPlaces.length > 1) {
-              return <PropertyDetails makeLease={this.makeLease} currentUser={this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
+              return <PropertyDetails allUsers={this.state.allUsers} makeLease={this.makeLease} currentUser={this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
             } else {
               return null;
             }
