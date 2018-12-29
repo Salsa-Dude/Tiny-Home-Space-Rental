@@ -73,18 +73,43 @@ class App extends Component {
 
   makeLease = (propertyObj) => {
     let OwnerUser;
-    console.log(propertyObj)
     this.state.allTinyPlaces.find(tinyPlace => {
      if(tinyPlace.id === propertyObj.propertyId) {
       OwnerUser = tinyPlace.user_id
     }
    })
-   
-  
-   
+
+   console.log(propertyObj)
+
+   let data = {
+     checkin: propertyObj.startDate,
+     checkout: propertyObj.endDate,
+     owner_id: OwnerUser,
+     renter_id: this.state.currentUser.id,
+     property_id: propertyObj.propertyId
+   }
+
+    fetch(`http://localhost:3000/api/v1/leases`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        lease: {
+          checkin: propertyObj.startDate,
+          checkout: propertyObj.endDate,
+          owner_id: OwnerUser,
+          renter_id: this.state.currentUser.id,
+          property_id: propertyObj.propertyId
+        } 
+      })
+    }).then(res => res.json())
+    .then(console.log)
+    
   }
 
-  render() {
+  render() {  
     return (
       <Fragment>
         <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
