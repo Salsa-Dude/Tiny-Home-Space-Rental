@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
      currentUser: null,
      loading: true,
-     allTinyPlaces: [] 
+     allTinyPlaces: [],
     }
   }
 
@@ -61,6 +61,19 @@ class App extends Component {
     })
   }
 
+  makeLease = (propertyObj) => {
+    let OwnerUser;
+    console.log(propertyObj)
+    this.state.allTinyPlaces.find(tinyPlace => {
+     if(tinyPlace.id === propertyObj.propertyId) {
+      OwnerUser = tinyPlace.user_id
+    }
+   })
+   
+  
+   
+  }
+
   render() {
     return (
       <Fragment>
@@ -71,7 +84,7 @@ class App extends Component {
           <Route exact path='/properties/:id' render={(props) => {
             let propertyId = props.match.params.id
             if(this.state.allTinyPlaces.length > 1) {
-              return <PropertyDetails property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
+              return <PropertyDetails makeLease={this.makeLease} currentUser={this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
             } else {
               return null;
             }

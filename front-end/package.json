@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.23.0",
     "react": "^16.7.0",
+    "react-datepicker": "^2.0.0",
     "react-dom": "^16.7.0",
     "react-rangeslider": "^2.2.0",
     "react-router-dom": "^4.3.1",

@@ -44,7 +44,14 @@
 }
 
 .ui.feed>.event>.label {
- width: 5.0em !important;
+ width: 4.8em !important;
+}
+
+.user-name {
+  margin-left: 10px;
+  margin-top: 5px;
+  font-weight: bold;
+  display: block;
 }
 
 .k {
@@ -61,4 +68,8 @@
 
 .review-div {
   margin-top: 10%;
+}
+
+.book-container {
+  margin-top: 30px;
 }
