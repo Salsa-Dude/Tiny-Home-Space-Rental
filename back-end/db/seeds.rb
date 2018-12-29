@@ -41,7 +41,7 @@ Message.destroy_all
 @Property12 = Property.create!(name: "Land of the Arts", image:"https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/08/08/14/rhode-island.jpg?w968h681", address: "645 Westminster St", city: "Providence", state: "Rhode Island", description: "Providence is an oft-overlooked mecca of cultural offerings and intelligent, interesting people. Pedestrian-friendly streets and amazing architecture make this city a perfect place to stroll aimlessly.", perks: "The state’s access to the freshest seafood and local produce makes the culinary offerings second to none, and there is always something happening, from hockey games at the Dunkin' Donuts Center to art gallery openings and exhibits. ", notes: "no pets, no smoking", price: 80, user_id: @Diana.id, user_info: "The sun, the city. The people, the food. This experience will remind you why life is good.")
 
 
-@Lease1 = Lease.create!(checkin: DateTime.new(2018, 6, 22), checkout: DateTime.new(2018, 9, 22), rules: "Only 5 days stay", total_price: 300, owner_id: @Joseph.id, renter_id: @Liz.id, property_id: @Property1.id)
+@Lease1 = Lease.create!(checkin: DateTime.new(2018, 6, 22), checkout: DateTime.new(2018, 9, 22), owner_id: @Joseph.id, renter_id: @Liz.id, property_id: @Property1.id)
 
 @Review1 = Review.create!(review_content: "Joseph was great host! I had a great time", rating: 5, reviewer_id: @Liz.id, reviewee_id: @Joseph.id, property_id: @Property1.id)
 @Review2 = Review.create!(review_content: "Jospeh was a great host! I had a great time", rating: 5, reviewer_id: @Diana.id, reviewee_id: @Joseph.id, property_id: @Property2.id)

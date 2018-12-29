@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2018_12_28_040043) do
   create_table "leases", force: :cascade do |t|
     t.date "checkin"
     t.date "checkout"
-    t.text "rules"
-    t.float "total_price"
     t.bigint "owner_id"
     t.bigint "renter_id"
     t.integer "property_id"
