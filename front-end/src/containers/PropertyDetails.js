@@ -34,7 +34,9 @@ class PropertyDetails extends Component {
     this.setState({ modalOpen: true })
   }
 
-  handleClose = () => this.setState({ modalOpen: false })
+  handleClose = () => {
+    this.setState({ modalOpen: false })
+  } 
   
   startHandleChange = (date) => {
     console.log(date)
@@ -64,7 +66,7 @@ class PropertyDetails extends Component {
   }
 
 
-
+  
   render() {
     let rating;
     let reviewerName;
@@ -78,6 +80,11 @@ class PropertyDetails extends Component {
       if (user.id === this.props.property.reviews[0].reviewer_id)
         reviewerName = user.first_name
     })
+
+    
+
+  
+
 
     return (
       <Fragment>
@@ -101,12 +108,7 @@ class PropertyDetails extends Component {
               ({this.props.property.reviews.length})
               </div>
               <div className="book-container">
-              <Form>
-                {/* <Form onSubmit={() => this.props.makeLease({
-                  propertyId: this.props.property.id,
-                  startDate: this.state.startDate,
-                  endDate: this.state.endDate
-                })}> */}
+                <Form>
                   <Form.Field>
                     <label>Select Start Date: </label>
                     <DatePicker
@@ -134,6 +136,23 @@ class PropertyDetails extends Component {
                     <Modal.Header>Rent Property</Modal.Header>
                     <Modal.Content image>
                       <Image wrapped size='medium' src={this.props.property.image} />
+                      <Modal.Description>
+                        <Header>Modal Header</Header>
+                        <p>
+                        <Icon name="calendar outline" size="large" /> {moment(this.state.startDate).format("MM/DD/YYYY")}  <Icon name="long arrow alternate right" /> {moment(this.state.endDate).format("MM/DD/YYYY")}
+                        </p>
+                        <p>
+                          ${this.props.property.price} x {Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days'))} days 
+                          <span>${Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days')) * this.props.property.price}</span>
+                        </p>
+                        <p>
+                          Service Fee: 
+                          <span>$10.00</span>
+                        </p>
+                        <p>
+                          Total ${Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days')) * this.props.property.price + 10}
+                        </p>
+                      </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>
                       <Button onClick={this.handleClose} color='red'>
@@ -144,7 +163,6 @@ class PropertyDetails extends Component {
                       </Button>
                     </Modal.Actions>
                   </Modal>
-                
                 </Form>
               </div>
             </Grid.Column>
