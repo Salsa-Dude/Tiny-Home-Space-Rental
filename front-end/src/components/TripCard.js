@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { Card, Image, Rating } from 'semantic-ui-react'
+import { Card, Image, Rating, Icon } from 'semantic-ui-react'
+import moment from 'moment'
+
+import '../tripContainer.css'
 
 
 class TripCard extends Component {
@@ -13,7 +16,7 @@ class TripCard extends Component {
         tripObject = tinyPlace
     })
 
-    console.log(tripObject)
+    // console.log(tripObject)
     
     return (
       <div className="trip-card">
@@ -23,10 +26,13 @@ class TripCard extends Component {
             <Card.Header>{tripObject.name}</Card.Header>
             <Card.Meta>{tripObject.state}</Card.Meta>
             <Card.Meta>{tripObject.city}</Card.Meta>
-            <Card.Description>Check In: {this.props.trip.checkin}</Card.Description>
-            <Card.Description>Check Out: {this.props.trip.checkout}</Card.Description>
+            <Card.Description>Check In: {moment(this.props.trip.checkin).format("MM/DD/YYYY")}</Card.Description>
+            <Card.Description>Check Out: {moment(this.props.trip.checkout).format("MM/DD/YYYY")}</Card.Description>
             <Card.Description>${tripObject.price} per week</Card.Description>
-            {/* { rating ? <Rating icon='star' defaultRating={rating} maxRating={5} disabled /> : null } */}
+            <div className="right">
+              <Icon name='edit' size='large' />
+              <Icon name='trash' size='large' />
+            </div>
           </Card.Content>
         </Card>
       </div>

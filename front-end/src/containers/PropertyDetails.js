@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 
-import { Card, Image, Rating, Grid, Segment, Feed, GridColumn, Form, Button, Label } from 'semantic-ui-react'
+import { Card, Image, Rating, Grid, Segment, Feed, GridColumn, Form, Button, Label, Breadcrumb  } from 'semantic-ui-react'
 import '../propertyDetails.css'
 
 
@@ -63,9 +63,18 @@ class PropertyDetails extends Component {
 
     return (
       <Fragment>
-      <Link to='/properties'>
-        <button>Back to Properties</button>
-      </Link>
+      
+      <div className="bread-crumb">
+        <Breadcrumb size='large'>
+          <Link to="/properties">
+            <Breadcrumb.Section link>Properties</Breadcrumb.Section>
+          </Link>
+          <Breadcrumb.Divider icon='right chevron' />
+          <Breadcrumb.Section active>Property Details</Breadcrumb.Section>
+        </Breadcrumb>
+      </div>
+
+    
       <br/>
       <div className="test">
         <Grid columns='equal'>

@@ -19,11 +19,6 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
             active={pathname === "/profile"}
           />
           <Menu.Item
-            name='Messages'
-            
-            // onClick={this.handleItemClick}
-          />
-          <Menu.Item
             name='Trips'
             as={NavLink}
             to="/trips"
@@ -36,7 +31,11 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
             
             // onClick={this.handleItemClick}
           />
+        
           <Menu.Menu position="right">
+          <Menu.Item
+            name='Messages'
+          />
             <Menu.Item to="/logout" name="Logout" onClick={logout} />
           </Menu.Menu>
         </Fragment>
