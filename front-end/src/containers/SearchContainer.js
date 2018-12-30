@@ -40,16 +40,15 @@ class SearchContainer extends Component {
           <SmallCard  tinyhome={nyInfo}/>
           <SmallCard  tinyhome={miamiInfo}/>
         </div>
-          <div className="grid-box">
-         <div className="ui four column grid">
-          <div className="row">
-            {this.props.allTinyPlaces.map(place => {
-              return <SearchCard key={place.id} place={place} />
-            })}
-          
+        <div className="grid-box">
+          <div className="ui four column grid">
+            <div className="row">
+              {this.props.allTinyPlaces.map(place => {
+                return <SearchCard key={place.id} place={place} />
+              })}
+            </div>
           </div>
-         </div>
-         </div>
+        </div>
         
       </div>
       </Fragment>

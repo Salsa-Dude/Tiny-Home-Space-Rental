@@ -25,6 +25,10 @@ class Api::V1::UsersController < ApplicationController
     render json: @users
   end
 
+  def trips
+    
+  end
+
   # def user_params
   #   params.require(:user).permit(:username, :password, :bio, :avatar)
   # end

@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import SmallCard from '../components/SmallCard'
 import HomeCard from '../components/HomeCard'
-import {Card, Icon, Image  } from 'semantic-ui-react'
+import {Card } from 'semantic-ui-react'
 import '../homepage.css'
 
 

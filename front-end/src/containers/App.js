@@ -5,6 +5,7 @@ import LoginForm from '../components/LoginForm';
 import Nav from '../components/Nav';
 import SearchContainer from './SearchContainer'
 import PropertyDetails from './PropertyDetails'
+import TripContainer  from './TripContainer'
 
 
 class App extends Component {
@@ -81,14 +82,6 @@ class App extends Component {
 
    console.log(propertyObj)
 
-   let data = {
-     checkin: propertyObj.startDate,
-     checkout: propertyObj.endDate,
-     owner_id: OwnerUser,
-     renter_id: this.state.currentUser.id,
-     property_id: propertyObj.propertyId
-   }
-
     fetch(`http://localhost:3000/api/v1/leases`, {
       method: 'POST',
       headers: {
@@ -105,8 +98,29 @@ class App extends Component {
         } 
       })
     }).then(res => res.json())
-    .then(console.log)
-    
+    .then(data => {
+
+      let newLease = {
+        checkin: data.lease.checkin,
+        checkout: data.lease.checkout,
+        id: data.lease.id,
+        owner_id: data.lease.owner_id,
+        property_id: data.lease.property_id,
+        renter_id: data.lease.renter_id
+      }
+
+      // ******************* ASK QUESTION ***************************
+      
+      let copyAllUsers = [...this.state.allUsers]
+       
+      let test = copyAllUsers.find(user => {
+        if(user.id === this.state.currentUser.id) {
+          return user.rentals.push(newLease)
+        }
+      })
+      
+      console.log(test)
+    })
   }
 
   render() {  
@@ -127,6 +141,7 @@ class App extends Component {
           <Route exact path="/profile" render={ () => 
             <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
+          <Route exact path="/trips" render={() => <TripContainer allTinyPlaces={this.state.allTinyPlaces} currentUser={this.state.currentUser} allUsers={this.state.allUsers} /> } />
           <Route exact path="/login" render={ () => this.state.loading ? null : (this.state.currentUser ?
           <Redirect to="/profile" />  :  <LoginForm setCurrentUser={this.setCurrentUser} /> )}
           />

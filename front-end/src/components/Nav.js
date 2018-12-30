@@ -25,11 +25,14 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
           />
           <Menu.Item
             name='Trips'
+            as={NavLink}
+            to="/trips"
+            active={pathname === "/trips"}
             
             // onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='Rentals'
+            name='Leases'
             
             // onClick={this.handleItemClick}
           />
