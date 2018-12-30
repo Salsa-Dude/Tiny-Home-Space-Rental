@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
+import { Divider } from 'semantic-ui-react'
 
 import TripCard from '../components/TripCard'
+import '../tripContainer.css'
 
 
 
@@ -13,20 +15,27 @@ class TripContainer extends Component {
   render() {
     let userTrips;
     this.props.allUsers.find(user => {
-      console.log(user)
+      // console.log(user)
+      // *****ERROR HERE***********
       if(user.id == this.props.currentUser.id) {
         userTrips = user.rentals
       }
     })
-
-    console.log(userTrips)
+    // console.log(userTrips)
 
     return (
       <Fragment>
-
-        {userTrips? userTrips.map(trip => {
-          return <TripCard allTinyPlaces={this.props.allTinyPlaces} key={trip.id} trip={trip} />
-        }) : null}
+        <div className="trips-container">
+          <h1>Upcoming Plans</h1>
+          <Divider />
+          <div className="ui three column grid">
+            <div className="row">
+              {userTrips? userTrips.map(trip => {
+                return <TripCard allTinyPlaces={this.props.allTinyPlaces} key={trip.id} trip={trip} />
+              }) : null}
+            </div>
+          </div>
+        </div>
       </Fragment>
     )
   }
