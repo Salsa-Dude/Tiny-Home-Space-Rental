@@ -1,18 +1,9 @@
 import React, { Component,Fragment } from 'react'
-import { 
-  Button, 
-  Form, Message,  Container,
-  Divider,
-  Grid,
-  Header,
-  Icon,
-  Image,
-  List,
-  Menu,
-  Responsive,
-  Segment,
-  Sidebar,
-  Visibility, } from 'semantic-ui-react'
+import { Button, Form, Message,  Container, Divider, Grid, Header, Icon, Image, List, Menu, Responsive, Segment,
+Sidebar, Visibility, } from 'semantic-ui-react'
+
+import styles from '../loginForm.css'
+
 
 class LoginForm extends Component {
   constructor() {
@@ -60,7 +51,6 @@ class LoginForm extends Component {
         <Header
           as='h1'
           content='Imagine-a-Company'
-          inverted
           style={{
             fontSize: mobile ? '2em' : '4em',
             fontWeight: 'normal',
@@ -71,7 +61,6 @@ class LoginForm extends Component {
         <Header
           as='h2'
           content='Do whatever you want when you want to.'
-          inverted
           style={{
             fontSize: mobile ? '1.5em' : '1.7em',
             fontWeight: 'normal',
@@ -87,7 +76,6 @@ class LoginForm extends Component {
 
     const { children } = this.props
     const { fixed } = this.state
-
     
     return (
       <Fragment>
@@ -98,14 +86,12 @@ class LoginForm extends Component {
             onBottomPassedReverse={this.hideFixedMenu}
           >
             <Segment
-              inverted
               textAlign='center'
               style={{ minHeight: 700, padding: '1em 0em' }}
               vertical
             >
               <Menu
                 fixed={fixed ? 'top' : null}
-                inverted={!fixed}
                 pointing={!fixed}
                 secondary={!fixed}
                 size='large'
@@ -118,54 +104,69 @@ class LoginForm extends Component {
                   <Menu.Item as='a'>Company</Menu.Item>
                   <Menu.Item as='a'>Careers</Menu.Item>
                   <Menu.Item position='right'>
-                    <Button as='a' inverted={!fixed}>
+                    <Button as='a' >
                       Log in
                     </Button>
-                    <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
+                    <Button as='a' style={{ marginLeft: '0.5em' }}>
                       Sign Up
                     </Button>
                   </Menu.Item>
                 </Container>
               </Menu>
-              <HomepageHeading />
+              <div className="jumbo-container">
+              <div className="jumbo">
+                <div className="ui grid">
+                  <div className="row">
+                    <div className="ten wide column login-heading-container">
+                     <h1>Live Simply So That Others May Simply Live</h1>
+                     <p>Travel and Explore safely with your tiny home or van</p>
+                      <div className="login-container">
+                      <Form className="login-form"
+                        onSubmit={this.handleLoginSubmit}
+                        size="big"
+                        key="big"
+                        loading={this.props.authenticatingUser}
+                        error={this.props.failedLogin}
+                      >
+                        <Message
+                          error
+                          header={this.props.failedLogin ? this.props.error : null}
+                        />
+                        <Form.Field>
+                        <Form.Input
+                            placeholder="username"
+                            name="username"
+                            onChange={this.handleChange}
+                            value={this.state.username}
+                          />
+                        </Form.Field>
+                        <Form.Field>
+                        <Form.Input
+                          type="password"
+                          placeholder="password"
+                          name="password"
+                          onChange={this.handleChange}
+                          value={this.state.password}
+                        />
+                        </Form.Field>
+                        
+                        <Button size="big" fluid type="submit">Get Started</Button>
+                      </Form>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              
             </Segment>
           </Visibility>
 
           {children}
         </Responsive>
-      
-      <Form
-      onSubmit={this.handleLoginSubmit}
-      size="mini"
-      key="mini"
-      loading={this.props.authenticatingUser}
-      error={this.props.failedLogin}
-    >
-      <Message
-        error
-        header={this.props.failedLogin ? this.props.error : null}
-      />
-      <Form.Group widths="equal">
-        <Form.Input
-          label="username"
-          placeholder="username"
-          name="username"
-          onChange={this.handleChange}
-          value={this.state.username}
-        />
-        <Form.Input
-          type="password"
-          label="password"
-          placeholder="password"
-          name="password"
-          onChange={this.handleChange}
-          value={this.state.password}
-        />
-      </Form.Group>
-      <Button type="submit">Login</Button>
-    </Form>
-
-    </ Fragment>
+      </ Fragment>
     )
   }
 }
