@@ -126,7 +126,8 @@ class App extends Component {
   render() {  
     return (
       <Fragment>
-        <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser} />
+        {this.props.location.pathname !== '/login' ? <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser}  /> : null }
+      
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/profile" />} />
           <Route exact path="/properties" render={() => <SearchContainer allTinyPlaces={this.state.allTinyPlaces} />} />
