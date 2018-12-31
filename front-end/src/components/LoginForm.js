@@ -46,33 +46,7 @@ class LoginForm extends Component {
   showFixedMenu = () => this.setState({ fixed: true })
   
   render() {
-    const HomepageHeading = ({ mobile }) => (
-      <Container text>
-        <Header
-          as='h1'
-          content='Imagine-a-Company'
-          style={{
-            fontSize: mobile ? '2em' : '4em',
-            fontWeight: 'normal',
-            marginBottom: 0,
-            marginTop: mobile ? '1.5em' : '3em',
-          }}
-        />
-        <Header
-          as='h2'
-          content='Do whatever you want when you want to.'
-          style={{
-            fontSize: mobile ? '1.5em' : '1.7em',
-            fontWeight: 'normal',
-            marginTop: mobile ? '0.5em' : '1.5em',
-          }}
-        />
-        <Button primary size='huge'>
-          Get Started
-          <Icon name='right arrow' />
-        </Button>
-      </Container>
-    )
+    
 
     const { children } = this.props
     const { fixed } = this.state
@@ -80,12 +54,12 @@ class LoginForm extends Component {
     return (
       <Fragment>
         <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-          <Visibility
+          <Visibility className="p"
             once={false}
             onBottomPassed={this.showFixedMenu}
             onBottomPassedReverse={this.hideFixedMenu}
           >
-            <Segment
+            <Segment 
               textAlign='center'
               style={{ minHeight: 700, padding: '1em 0em' }}
               vertical
@@ -97,17 +71,17 @@ class LoginForm extends Component {
                 size='large'
               >
                 <Container>
-                  <Menu.Item as='a' active>
+                  <Menu.Item className="login-menu" as='a' active>
                     Home
                   </Menu.Item>
-                  <Menu.Item as='a'>Work</Menu.Item>
-                  <Menu.Item as='a'>Company</Menu.Item>
-                  <Menu.Item as='a'>Careers</Menu.Item>
+                  <Menu.Item className="login-menu" as='a'>Work</Menu.Item>
+                  <Menu.Item className="login-menu" as='a'>Company</Menu.Item>
+                  <Menu.Item className="login-menu" as='a'>Careers</Menu.Item>
                   <Menu.Item position='right'>
-                    <Button as='a' >
+                    <Menu.Item className="login-menu" as='a' >
                       Log in
-                    </Button>
-                    <Button as='a' style={{ marginLeft: '0.5em' }}>
+                    </Menu.Item>
+                    <Button className="login-btn" as='a' style={{ marginLeft: '0.5em' }}>
                       Sign Up
                     </Button>
                   </Menu.Item>
@@ -150,7 +124,7 @@ class LoginForm extends Component {
                         />
                         </Form.Field>
                         
-                        <Button size="big" fluid type="submit">Get Started</Button>
+                        <Button size="big" className="login-btn" fluid type="submit">Get Started</Button>
                       </Form>
                       </div>
                       

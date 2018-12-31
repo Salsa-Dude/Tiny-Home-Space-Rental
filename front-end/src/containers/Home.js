@@ -34,7 +34,6 @@ class Home extends Component {
 
   render() {
     const { activeItem } = this.state
-
     const tinyParkingInfo =  {
       img: 'https://westernnews.media.clients.ellingtoncms.com/img/photos/2016/10/16/tiny_house_wheels_t715.jpg?529764a1de2bdd0f74a9fb4f856b01a9d617b3e9',
       heading: 'Tiny House Parking',

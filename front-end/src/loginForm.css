@@ -1,15 +1,18 @@
 
-.ui.inverted.segment, .ui.primary.inverted.segment {
-  /* background: white !important;
-  color: black !important; */
+.p {
+  background: linear-gradient(rgba(100, 99, 99, 0.3), rgba(100, 99, 99, 0.4)), url("https://tinyhousegiantjourney.com/wp-content/uploads/2015/03/thgj-in-arizona-0001-1024x576.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+ 
+}
+
+.login-menu  {
+  color: white !important;  
 }
 
 .jumbo-container {
-  background: linear-gradient(rgba(46, 45, 45, 0.4), rgba(46, 45, 45, 0.4)), url("https://img.buzzfeed.com/buzzfeed-static/static/2015-03/4/14/enhanced/webdr06/original-8299-1425498450-21.png?downsize=700:*&output-format=auto&output-quality=auto");
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 0;
-  margin: 0;
+  
 
 }
 
@@ -20,7 +23,7 @@
 .login-heading-container {
   margin-right: auto;
   margin-left: auto;
-  padding-top: 70px;
+  padding-top: 80px;
   color: white;
 }
 
@@ -35,4 +38,10 @@
 .login-form {
 
  
+}
+
+.login-btn {
+  background-color: rgb(65, 63, 63) !important;
+  color: white !important ;
+  opacity: .8 !important;
 }
