@@ -76,4 +76,27 @@
 
 .bread-crumb {
   margin-left: 5%;
+  margin-top: 3%;
+}
+
+.modal-date {
+  font-size: 16px;
+}
+
+.amount-container {
+  display:flex;
+}
+
+.amount-right {
+ float: right;
+ font-size: 16px;
+}
+
+.total-amount {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.modal-desc-container { 
+  margin-left: 15%;
 }

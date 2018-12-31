@@ -133,7 +133,9 @@ class App extends Component {
           <Route exact path='/properties/:id' render={(props) => {
             let propertyId = props.match.params.id
             if(this.state.allTinyPlaces.length > 1) {
-              return <PropertyDetails allUsers={this.state.allUsers} makeLease={this.makeLease} currentUser={this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
+              return <PropertyDetails allUsers={this.state.allUsers} makeLease={this.makeLease} currentUser=
+              // Check problem **********************
+              {this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
             } else {
               return null;
             }

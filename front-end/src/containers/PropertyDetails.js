@@ -136,30 +136,32 @@ class PropertyDetails extends Component {
                     <Modal.Header>Rent Property</Modal.Header>
                     <Modal.Content image>
                       <Image wrapped size='medium' src={this.props.property.image} />
+                      <div className="modal-desc-container">
                       <Modal.Description>
                         <Header>Modal Header</Header>
                         <p>
-                        <Icon name="calendar outline" size="large" /> {moment(this.state.startDate).format("MM/DD/YYYY")}  <Icon name="long arrow alternate right" /> {moment(this.state.endDate).format("MM/DD/YYYY")}
+                        <Icon name="calendar outline" size="large" /> <span className="modal-date"> {moment(this.state.startDate).format("MM/DD/YYYY")} </span> <Icon name="long arrow alternate right" /> <span className="modal-date"> {moment(this.state.endDate).format("MM/DD/YYYY")} </span>
                         </p>
                         <p>
-                          ${this.props.property.price} x {Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days'))} days 
-                          <span>${Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days')) * this.props.property.price}</span>
+                          <span className="modal-date">${this.props.property.price} x {Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days'))} days </span>
+                          <span className="amount-right">${Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days')) * this.props.property.price}</span>
                         </p>
                         <p>
-                          Service Fee: 
-                          <span>$10.00</span>
+                          <span className="modal-date">Service Fee:</span>
+                          <span className="amount-right">$10.00</span>
                         </p>
                         <p>
-                          Total ${Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days')) * this.props.property.price + 10}
+                          <span className="modal-date">Total</span> <span className="total-amount amount-right">${Math.abs(moment(this.state.startDate).diff(this.state.endDate, 'days')) * this.props.property.price + 10} </span>
                         </p>
                       </Modal.Description>
+                      </div>
                     </Modal.Content>
                     <Modal.Actions>
                       <Button onClick={this.handleClose} color='red'>
-                        <Icon name='remove' /> No
+                        <Icon name='remove' /> Cancel
                       </Button>
                       <Button onClick={this.sendLease} color='green'>
-                        <Icon name='checkmark' /> Yes
+                        <Icon name='checkmark' /> Confirm
                       </Button>
                     </Modal.Actions>
                   </Modal>
