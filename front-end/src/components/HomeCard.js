@@ -8,7 +8,7 @@ class HomeCard extends Component {
   
   render() {
     return (
-      <Card>
+      <Card className="home-card">
         <Image src={this.props.homeCard.img} />
         <Card.Content>
           <Card.Header>{this.props.homeCard.header}</Card.Header>

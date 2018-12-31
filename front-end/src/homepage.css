@@ -1,6 +1,14 @@
+
+.home-container {
+  /* height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: #fdfdfd; */
+}
+
 .greeting-heading {
  margin-left: 8%;
- margin-top: 5%;
+ padding-top: 5%;
 }
 
 .unique-heading {
@@ -14,11 +22,10 @@
 }
 
 .unique-heading .cards {
-  
   position: absolute;
   width: 80%;
-  
   left: 50%;
   transform: translate(-50%, 0);
  
 }
+
