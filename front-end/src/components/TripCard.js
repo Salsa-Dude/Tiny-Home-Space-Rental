@@ -76,64 +76,63 @@ class TripCard extends Component {
     // console.log(tripObject)
     
     return (
-      <div className="trip-card">
-        <Card>
-          {/******* Cannot read property 'image' of undefined ******/}
-          <Image src={tripObject.image} />
-          <Card.Content>
-            <Card.Header>{tripObject.name}</Card.Header>
-            <Card.Meta>{tripObject.state}</Card.Meta>
-            <Card.Meta>{tripObject.city}</Card.Meta>
-            <Card.Description>Check In: {moment(this.props.trip.checkin).format("MM/DD/YYYY")}</Card.Description>
-            <Card.Description>Check Out: {moment(this.props.trip.checkout).format("MM/DD/YYYY")}</Card.Description>
-            <Card.Description>${tripObject.price} per week</Card.Description>
-            <div className="right">
-              <Icon link onClick={this.show('inverted')} name='edit' size='large' />
-              
-              <Modal dimmer={dimmer} open={open} onClose={this.close}>
-                <Modal.Header>Update Trip</Modal.Header>
-                <Modal.Content image>
-                  <Image wrapped size='medium' src={tripObject.image} />
-                  <Modal.Description>
-                  <Header>{tripObject.city}, {tripObject.state}</Header>
-                  <Form>
-                    <Form.Field>
-                      <label>Select Start Date: </label>
-                      <DatePicker
-                        selected={ this.state.startDate}
-                        onChange={ this.startHandleChange }
-                        minDate={this.state.startDate}
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Select End Date: </label>
-                      <DatePicker
-                        selected={ this.state.endDate }
-                        onChange={ this.endHandleChange }
-                        minDate={this.state.endDate}
-                      />
-                    </Form.Field>
-                  </Form>
-                  </Modal.Description>
-                </Modal.Content>
-                <Modal.Actions>
-                  <Button color='black' onClick={this.close}>
-                    Cancel
-                  </Button>
-                  <Button
-                    positive
-                    icon='checkmark'
-                    labelPosition='right'
-                    content="Update Trip"
-                    onClick={this.updateTripDate}
-                  />
-                </Modal.Actions>
-              </Modal>
-              <Icon name='trash' size='large' />
-            </div>
-          </Card.Content>
-        </Card>
-      </div>
+      tripObject ? (<div className="trip-card">
+      <Card>
+        <Image src={tripObject.image} />
+        <Card.Content>
+          <Card.Header>{tripObject.name}</Card.Header>
+          <Card.Meta>{tripObject.state}</Card.Meta>
+          <Card.Meta>{tripObject.city}</Card.Meta>
+          <Card.Description>Check In: {moment(this.props.trip.checkin).format("MM/DD/YYYY")}</Card.Description>
+          <Card.Description>Check Out: {moment(this.props.trip.checkout).format("MM/DD/YYYY")}</Card.Description>
+          <Card.Description>${tripObject.price} per week</Card.Description>
+          <div className="right">
+            <Icon link onClick={this.show('inverted')} name='edit' size='large' />
+            
+            <Modal dimmer={dimmer} open={open} onClose={this.close}>
+              <Modal.Header>Update Trip</Modal.Header>
+              <Modal.Content image>
+                <Image wrapped size='medium' src={tripObject.image} />
+                <Modal.Description>
+                <Header>{tripObject.city}, {tripObject.state}</Header>
+                <Form>
+                  <Form.Field>
+                    <label>Select Start Date: </label>
+                    <DatePicker
+                      selected={ this.state.startDate}
+                      onChange={ this.startHandleChange }
+                      minDate={this.state.startDate}
+                    />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Select End Date: </label>
+                    <DatePicker
+                      selected={ this.state.endDate }
+                      onChange={ this.endHandleChange }
+                      minDate={this.state.endDate}
+                    />
+                  </Form.Field>
+                </Form>
+                </Modal.Description>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button color='black' onClick={this.close}>
+                  Cancel
+                </Button>
+                <Button
+                  positive
+                  icon='checkmark'
+                  labelPosition='right'
+                  content="Update Trip"
+                  onClick={this.updateTripDate}
+                />
+              </Modal.Actions>
+            </Modal>
+            <Icon name='trash' size='large' />
+          </div>
+        </Card.Content>
+      </Card>
+    </div>) : null
     )
   }
 }
