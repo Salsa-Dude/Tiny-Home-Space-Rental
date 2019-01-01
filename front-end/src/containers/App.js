@@ -73,14 +73,20 @@ class App extends Component {
   }
 
   makeLease = (propertyObj) => {
-    let OwnerUser;
-    this.state.allTinyPlaces.find(tinyPlace => {
-     if(tinyPlace.id === propertyObj.propertyId) {
-      OwnerUser = tinyPlace.user_id
-    }
-   })
 
-  //  console.log(propertyObj)
+
+   
+    let ownerUser = this.state.allTinyPlaces.find(tinyPlace => {
+      return tinyPlace.id === propertyObj.propertyId
+    })
+
+    let data = {
+      checkin: propertyObj.startDate,
+      checkout: propertyObj.endDate,
+      owner_id: ownerUser.user_id,
+      renter_id: this.state.currentUser.id,
+      property_id: propertyObj.propertyId
+    }
 
     fetch(`http://localhost:3000/api/v1/leases`, {
       method: 'POST',
@@ -88,36 +94,27 @@ class App extends Component {
         "Content-Type": "application/json",
         Accept: 'application/json'
       },
-      body: JSON.stringify({
-        lease: {
-          checkin: propertyObj.startDate,
-          checkout: propertyObj.endDate,
-          owner_id: OwnerUser,
-          renter_id: this.state.currentUser.id,
-          property_id: propertyObj.propertyId
-        } 
-      })
+      body: JSON.stringify(data)
     }).then(res => res.json())
     .then(data => {
-
+    
+ 
       let newLease = {
-        checkin: data.lease.checkin,
-        checkout: data.lease.checkout,
-        id: data.lease.id,
-        owner_id: data.lease.owner_id,
-        property_id: data.lease.property_id,
-        renter_id: data.lease.renter_id
+        checkin: data.checkin,
+        checkout: data.checkout,
+        id: data.id,
+        owner_id: data.owner_id,
+        property_id: data.property_id,
+        renter_id: data.renter_id
       }
-
-      // ******************* ASK QUESTION ***************************
       
       let copyAllUsers = [...this.state.allUsers]
-       
-      let test = copyAllUsers.find(user => {
-        if(user.id === this.state.currentUser.id) {
-          return user.rentals.push(newLease)
-        }
+
+      let foundUser = copyAllUsers.find(user => {
+        return user.id === this.state.currentUser.id
       })
+
+      foundUser.rentals.push(newLease)
       
     })
   }

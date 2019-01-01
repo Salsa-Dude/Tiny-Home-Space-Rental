@@ -6,12 +6,9 @@ class Api::V1::LeasesController < ApplicationController
 
   def create 
    @lease = Lease.create(lease_params)
+   render json: @lease
   
-    if @lease.valid?
-      render json: { lease: LeaseSerializer.new(@lease) }, status: :created
-    else
-      render json: { error: 'failed to create lease' }, status: :not_acceptable
-    end
+
   end
 
   def update

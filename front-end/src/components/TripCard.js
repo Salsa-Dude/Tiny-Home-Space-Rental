@@ -13,6 +13,7 @@ class TripCard extends Component {
       open: false,
       startDate: props.trip.checkin,
       endDate: props.trip.checkout,
+      modalOpen: false
     }
   }
 
@@ -54,6 +55,7 @@ class TripCard extends Component {
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })
+ 
   close = () => {
     this.setState({ 
       open: false,
@@ -61,6 +63,10 @@ class TripCard extends Component {
       endDate: this.props.trip.checkout
     })
   } 
+
+  handleOpen = () => this.setState({ modalOpen: true })
+
+  handleClose = () => this.setState({ modalOpen: false })
   
   render() {
     // console.log(this.props.trip)
@@ -87,13 +93,13 @@ class TripCard extends Component {
           <Card.Description>Check Out: {moment(this.props.trip.checkout).format("MM/DD/YYYY")}</Card.Description>
           <Card.Description>${tripObject.price} per week</Card.Description>
           <div className="right">
-            <Icon link onClick={this.show('inverted')} name='edit' size='large' />
+            <Icon link onClick={this.show('blurring')} name='edit' size='large' />
             
             <Modal dimmer={dimmer} open={open} onClose={this.close}>
               <Modal.Header>Update Trip</Modal.Header>
               <Modal.Content image>
                 <Image wrapped size='medium' src={tripObject.image} />
-                <Modal.Description>
+                <Modal.Description className="update-form">
                 <Header>{tripObject.city}, {tripObject.state}</Header>
                 <Form>
                   <Form.Field>
@@ -128,10 +134,26 @@ class TripCard extends Component {
                 />
               </Modal.Actions>
             </Modal>
-            <Icon name='trash' size='large' />
-          </div>
-        </Card.Content>
-      </Card>
+
+            <Modal
+              trigger={<Icon link onClick={this.handleOpen} name='trash' size='large' />}
+              open={this.state.modalOpen}
+              onClose={this.handleClose}
+              size='small'
+            >
+              <Header className="delete-header" icon='trash' content='Delete Trip ' />
+              <Modal.Description>
+                <p className="delete-message">Are you sure you want to delete this upcoming trip?</p>
+              </Modal.Description>
+              <Modal.Actions>
+                <Button color='red' onClick={this.handleClose} inverted>
+                  <Icon name='checkmark' /> Delete
+                </Button>
+              </Modal.Actions>
+            </Modal>
+            </div>
+          </Card.Content>
+        </Card>
     </div>) : null
     )
   }
