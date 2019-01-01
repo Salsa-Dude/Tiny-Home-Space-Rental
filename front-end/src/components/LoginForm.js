@@ -74,9 +74,9 @@ class LoginForm extends Component {
                   <Menu.Item className="login-menu" as='a' active>
                     Home
                   </Menu.Item>
-                  <Menu.Item className="login-menu" as='a'>Work</Menu.Item>
-                  <Menu.Item className="login-menu" as='a'>Company</Menu.Item>
-                  <Menu.Item className="login-menu" as='a'>Careers</Menu.Item>
+                  <Menu.Item className="login-menu" as='a'>About</Menu.Item>
+                  <Menu.Item className="login-menu" as='a'>Mission</Menu.Item>
+                  <Menu.Item className="login-menu" as='a'></Menu.Item>
                   <Menu.Item position='right'>
                     <Menu.Item className="login-menu" as='a' >
                       Log in

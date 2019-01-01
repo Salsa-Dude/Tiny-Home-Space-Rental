@@ -64,8 +64,6 @@ class PropertyDetails extends Component {
         })
       })
   }
-
-
   
   render() {
     let rating;
@@ -138,7 +136,7 @@ class PropertyDetails extends Component {
                       <Image wrapped size='medium' src={this.props.property.image} />
                       <div className="modal-desc-container">
                       <Modal.Description>
-                        <Header>Modal Header</Header>
+                        <Header>{this.props.property.city}, {this.props.property.state}</Header>
                         <p>
                         <Icon name="calendar outline" size="large" /> <span className="modal-date"> {moment(this.state.startDate).format("MM/DD/YYYY")} </span> <Icon name="long arrow alternate right" /> <span className="modal-date"> {moment(this.state.endDate).format("MM/DD/YYYY")} </span>
                         </p>

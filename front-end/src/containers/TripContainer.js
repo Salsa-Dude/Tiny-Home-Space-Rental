@@ -10,7 +10,7 @@ import '../tripContainer.css'
 
 class TripContainer extends Component {
   constructor(props) {
-    super()
+    super(props)
   }
 
 
@@ -19,6 +19,7 @@ class TripContainer extends Component {
     this.props.allUsers.find(user => {
       // console.log(user)
       // *****ERROR HERE***********
+      // Cannot read property 'id' of null
       if(user.id == this.props.currentUser.id) {
         userTrips = user.rentals
       }
@@ -33,7 +34,7 @@ class TripContainer extends Component {
           <div className="ui four column grid">
             <div className="row">
               {userTrips? userTrips.map(trip => {
-                return <TripCard allTinyPlaces={this.props.allTinyPlaces} key={trip.id} trip={trip} />
+                return <TripCard updateTrip={this.props.updateTrip} allTinyPlaces={this.props.allTinyPlaces} key={trip.id} trip={trip} />
               }) : null}
             </div>
           </div>

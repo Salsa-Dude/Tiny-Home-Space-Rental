@@ -80,7 +80,7 @@ class App extends Component {
     }
    })
 
-   console.log(propertyObj)
+  //  console.log(propertyObj)
 
     fetch(`http://localhost:3000/api/v1/leases`, {
       method: 'POST',
@@ -119,8 +119,11 @@ class App extends Component {
         }
       })
       
-      console.log(test)
     })
+  }
+
+  updateTrip = (obj) => {
+      console.log('hey')
   }
 
   render() {  
@@ -144,8 +147,10 @@ class App extends Component {
           <Route exact path="/profile" render={ () => 
             <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
-          <Route exact path="/trips" render={() => <TripContainer allTinyPlaces={this.state.allTinyPlaces} currentUser={this.state.currentUser} allUsers={this.state.allUsers} /> } />
+          <Route exact path="/trips" render={() => <TripContainer updateTrip={this.updateTrip} allTinyPlaces={this.state.allTinyPlaces} currentUser={this.state.currentUser} allUsers={this.state.allUsers} /> } />
+          
           <Route exact path="/login" render={ () => this.state.loading ? null : (this.state.currentUser ?
+          
           <Redirect to="/profile" />  :  <LoginForm setCurrentUser={this.setCurrentUser} /> )}
           />
         </Switch>
