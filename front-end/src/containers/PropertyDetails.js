@@ -78,12 +78,7 @@ class PropertyDetails extends Component {
       if (user.id === this.props.property.reviews[0].reviewer_id)
         reviewerName = user.first_name
     })
-
     
-
-  
-
-
     return (
       <Fragment>
         <div className="bread-crumb">

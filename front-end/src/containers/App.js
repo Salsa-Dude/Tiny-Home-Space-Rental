@@ -73,9 +73,6 @@ class App extends Component {
   }
 
   makeLease = (propertyObj) => {
-
-
-   
     let ownerUser = this.state.allTinyPlaces.find(tinyPlace => {
       return tinyPlace.id === propertyObj.propertyId
     })
@@ -97,8 +94,6 @@ class App extends Component {
       body: JSON.stringify(data)
     }).then(res => res.json())
     .then(data => {
-    
- 
       let newLease = {
         checkin: data.checkin,
         checkout: data.checkout,
@@ -119,11 +114,36 @@ class App extends Component {
     })
   }
 
-  updateTrip = (obj) => {
-      console.log('hey')
+  deleteTrip = (tripId) => {
+
+    console.log(this.state.allUsers)
+    
+    fetch(`http://localhost:3000/api/v1/leases/${tripId}`, {
+      method: "DELETE",
+    }).then(res => res.json())
+    .then(data => {
+      
+      console.log(this.state.allUsers)
+
+      let foundUser = this.state.allUsers.find(user => {
+        return user.id === this.state.currentUser.id
+      })
+
+      let test = foundUser.rentals.filter(rental => {
+        return rental.id !== data.id
+      })
+
+      let k = this.state.allUsers.filter(user => {
+        if(user.id === foundUser.id) {
+          return user.rentals = test
+        }
+      })
+
+    })
   }
 
   render() {  
+    console.log(this.state.allUsers)
     return (
       <Fragment>
         {this.props.location.pathname !== '/login' ? <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser}  /> : null }
@@ -144,7 +164,7 @@ class App extends Component {
           <Route exact path="/profile" render={ () => 
             <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
-          <Route exact path="/trips" render={() => <TripContainer updateTrip={this.updateTrip} allTinyPlaces={this.state.allTinyPlaces} currentUser={this.state.currentUser} allUsers={this.state.allUsers} /> } />
+          <Route exact path="/trips" render={() => <TripContainer deleteTrip={this.deleteTrip} updateTrip={this.updateTrip} allTinyPlaces={this.state.allTinyPlaces} currentUser={this.state.currentUser} allUsers={this.state.allUsers} /> } />
           
           <Route exact path="/login" render={ () => this.state.loading ? null : (this.state.currentUser ?
           

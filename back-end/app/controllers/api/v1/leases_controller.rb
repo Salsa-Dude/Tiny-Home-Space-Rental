@@ -7,13 +7,15 @@ class Api::V1::LeasesController < ApplicationController
   def create 
    @lease = Lease.create(lease_params)
    render json: @lease
-  
-
   end
 
   def update
     @lease = Lease.find(params[:id]).update(lease_params)
     render json: @lease
+  end
+
+  def destroy
+    render json: Lease.find(params[:id]).destroy
   end
 
   private 

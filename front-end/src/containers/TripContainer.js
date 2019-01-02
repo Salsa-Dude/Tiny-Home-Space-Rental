@@ -6,10 +6,9 @@ import '../tripContainer.css'
 import { localeData } from 'moment';
 
 class TripContainer extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
   }
-
 
   render() {
     
@@ -25,7 +24,7 @@ class TripContainer extends Component {
           <div className="ui four column grid">
             <div className="row">
               {user.rentals.map(trip => {
-                return <TripCard updateTrip={this.props.updateTrip} allTinyPlaces={this.props.allTinyPlaces} key={trip.id} trip={trip} />
+                return <TripCard deleteTrip={this.props.deleteTrip} updateTrip={this.props.updateTrip} allTinyPlaces={this.props.allTinyPlaces} key={trip.id} trip={trip} />
               })}
             </div>
           </div>

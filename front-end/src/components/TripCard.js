@@ -11,9 +11,10 @@ class TripCard extends Component {
     super(props)
     this.state = {
       open: false,
-      startDate: props.trip.checkin,
-      endDate: props.trip.checkout,
-      modalOpen: false
+      startDate: this.props.trip.checkin,
+      endDate: this.props.trip.checkout,
+      modalOpen: false,
+      tripObject: null
     }
   }
 
@@ -67,40 +68,48 @@ class TripCard extends Component {
   handleOpen = () => this.setState({ modalOpen: true })
 
   handleClose = () => this.setState({ modalOpen: false })
-  
-  render() {
-    // console.log(this.props.trip)
-    let tripObject;
-    
+
+  deleteTrip = () => {
+    this.setState({ 
+      modalOpen: false,
+      tripObject: null
+    })
+    this.props.deleteTrip(this.props.trip.id)
+  }
+
+  componentDidMount() {
     this.props.allTinyPlaces.map(tinyPlace => {
       if(tinyPlace.id === this.props.trip.property_id)
-        tripObject = tinyPlace
+        this.setState({
+          tripObject: tinyPlace
+        })
     })
-
+  }
+  
+  render() {
+  
     const { open, dimmer } = this.state
-
-    // console.log(tripObject)
     
     return (
-      tripObject ? (<div className="trip-card">
+      this.state.tripObject ? (<div className="trip-card">
       <Card>
-        <Image src={tripObject.image} />
+        <Image src={this.state.tripObject.image} />
         <Card.Content>
-          <Card.Header>{tripObject.name}</Card.Header>
-          <Card.Meta>{tripObject.state}</Card.Meta>
-          <Card.Meta>{tripObject.city}</Card.Meta>
+          <Card.Header>{this.state.tripObject.name}</Card.Header>
+          <Card.Meta>{this.state.tripObject.state}</Card.Meta>
+          <Card.Meta>{this.state.tripObject.city}</Card.Meta>
           <Card.Description>Check In: {moment(this.props.trip.checkin).format("MM/DD/YYYY")}</Card.Description>
           <Card.Description>Check Out: {moment(this.props.trip.checkout).format("MM/DD/YYYY")}</Card.Description>
-          <Card.Description>${tripObject.price} per week</Card.Description>
+          <Card.Description>${this.state.tripObject.price} per week</Card.Description>
           <div className="right">
             <Icon link onClick={this.show('blurring')} name='edit' size='large' />
             
             <Modal dimmer={dimmer} open={open} onClose={this.close}>
               <Modal.Header>Update Trip</Modal.Header>
               <Modal.Content image>
-                <Image wrapped size='medium' src={tripObject.image} />
+                <Image wrapped size='medium' src={this.state.tripObject.image} />
                 <Modal.Description className="update-form">
-                <Header>{tripObject.city}, {tripObject.state}</Header>
+                <Header>{this.state.tripObject.city}, {this.state.tripObject.state}</Header>
                 <Form>
                   <Form.Field>
                     <label>Select Start Date: </label>
@@ -146,8 +155,11 @@ class TripCard extends Component {
                 <p className="delete-message">Are you sure you want to delete this upcoming trip?</p>
               </Modal.Description>
               <Modal.Actions>
-                <Button color='red' onClick={this.handleClose} inverted>
-                  <Icon name='checkmark' /> Delete
+              <Button color='red' onClick={this.handleClose} inverted>
+                  <Icon name='x' /> No
+                </Button>
+                <Button color='green' onClick={this.deleteTrip} inverted>
+                  <Icon name='checkmark' /> Yes
                 </Button>
               </Modal.Actions>
             </Modal>
