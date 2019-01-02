@@ -1,19 +1,14 @@
 
+@import url('https://fonts.googleapis.com/css?family=Charm:400,700|Indie+Flower');
+
 .p {
   background: linear-gradient(rgba(100, 99, 99, 0.3), rgba(100, 99, 99, 0.4)), url("https://tinyhousegiantjourney.com/wp-content/uploads/2015/03/thgj-in-arizona-0001-1024x576.jpg");
   background-repeat: no-repeat;
   background-size: cover;
- 
- 
 }
 
 .login-menu  {
   color: white !important;  
-}
-
-.jumbo-container {
-  
-
 }
 
 .jumbo{
@@ -23,7 +18,7 @@
 .login-heading-container {
   margin-right: auto;
   margin-left: auto;
-  padding-top: 80px;
+  padding-top: 70px;
   color: white;
 }
 
@@ -44,4 +39,14 @@
   background-color: rgb(65, 63, 63) !important;
   color: white !important ;
   opacity: .8 !important;
+}
+
+.landing-header {
+  font-size: 45px;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+}
+
+.landing-solgan {
+  font-size: 18px;
 }

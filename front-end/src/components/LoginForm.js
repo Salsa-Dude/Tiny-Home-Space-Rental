@@ -92,8 +92,8 @@ class LoginForm extends Component {
                 <div className="ui grid">
                   <div className="row">
                     <div className="ten wide column login-heading-container">
-                     <h1>Live Simply So That Others May Simply Live</h1>
-                     <p>Travel and Explore safely with your tiny home or van</p>
+                     <h1 className="landing-header">Live Simply So That Others May Simply Live</h1>
+                     <p className="landing-solgan">Travel and Explore safely with your tiny home or van</p>
                       <div className="login-container">
                       <Form className="login-form"
                         onSubmit={this.handleLoginSubmit}
