@@ -6,6 +6,7 @@ import Nav from '../components/Nav';
 import SearchContainer from './SearchContainer'
 import PropertyDetails from './PropertyDetails'
 import TripContainer  from './TripContainer'
+import MyPropertyContainer from './MyPropertyContainer';
 
 
 class App extends Component {
@@ -165,6 +166,8 @@ class App extends Component {
             <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
           <Route exact path="/trips" render={() => <TripContainer deleteTrip={this.deleteTrip} updateTrip={this.updateTrip} allTinyPlaces={this.state.allTinyPlaces} currentUser={this.state.currentUser} allUsers={this.state.allUsers} /> } />
+
+          <Route exact path="/myProperties" render={() => <MyPropertyContainer currentUser={this.state.currentUser} allUsers={this.state.allUsers} allTinyPlaces={this.state.allTinyPlaces}  />  } />
           
           <Route exact path="/login" render={ () => this.state.loading ? null : (this.state.currentUser ?
           

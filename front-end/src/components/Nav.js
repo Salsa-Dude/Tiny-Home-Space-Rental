@@ -27,8 +27,10 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
             // onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='Leases'
-            
+            name='My Properties'
+            as={NavLink}
+            to="/myProperties"
+            active={pathname === "/myProperties"}
             // onClick={this.handleItemClick}
           />
         

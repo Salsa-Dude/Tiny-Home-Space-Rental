@@ -19,7 +19,7 @@ class TripContainer extends Component {
     return user ? (
       <Fragment>
         <div className="trips-container">
-          <h1>Upcoming Plans</h1>
+          <h1>Upcoming Booked Trips</h1>
           <Divider />
           <div className="ui four column grid">
             <div className="row">
