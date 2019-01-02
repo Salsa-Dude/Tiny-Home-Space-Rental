@@ -1,0 +1,15 @@
+
+.message-container {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.message-segment-container {
+ width: 80%;
+ margin: 0px auto;
+}
+
+.message-segment {
+  border: solid;
+  height: 500px;
+}

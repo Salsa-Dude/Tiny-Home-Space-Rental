@@ -36,7 +36,10 @@ const Nav = ({ location: { pathname }, logged_in, setCurrentUser }) => {
         
           <Menu.Menu position="right">
           <Menu.Item
-            name='Messages'
+            name='Inbox'
+            as={NavLink}
+            to="/messages"
+            active={pathname === "/messages"}
           />
             <Menu.Item to="/logout" name="Logout" onClick={logout} />
           </Menu.Menu>
