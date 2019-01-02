@@ -18,3 +18,22 @@
 .property-description-box {
   font-size: 16px !important;
 }
+
+.property-buttons {
+  margin-top: 10px;
+}
+
+.property-buttons button {
+  margin-right: 15px !important;
+}
+
+.edit-btn {
+  color: white !important;
+  background-color: #5bc0de !important;
+}
+
+.delete-btn {
+  color: white !important;
+  background-color: #d9534f !important;
+}
+

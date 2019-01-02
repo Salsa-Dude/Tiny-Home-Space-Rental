@@ -26,6 +26,10 @@ class MyPropertyCard extends Component {
               <p>Rules: {this.props.property.notes}</p>
               <p>Price: ${this.props.property.price}</p>
             </Item.Description>
+            <div className="property-buttons">
+              <Button className="edit-btn" size="small" > <Icon link name='edit' />Edit</Button>
+              <Button className="delete-btn" size="small" > <Icon link name='trash' />Delete</Button>
+            </div>
           </Item.Content>
         </Item>
         <Divider />
