@@ -10,7 +10,6 @@
   background-color: #F2F2F2;
   text-align: center;
   margin-left: 3%;
- 
 }
 
 .inner-property-name-box {
@@ -29,11 +28,15 @@
 }
 
 .small-space {
-  height: 60px;
+  height: 80px;
 }
 
 .property-info-container {
   text-align: center;
+}
+
+.property-desc-box {
+  padding: 0px !important;
 }
 
 .property-description {
@@ -55,6 +58,7 @@
 }
 
 .k {
+  margin-top: -2%;
 }
 
 .ki iframe {
@@ -99,4 +103,8 @@
 
 .modal-desc-container { 
   margin-left: 15%;
+}
+
+.review-btn {
+  margin-right: 25% !important;
 }

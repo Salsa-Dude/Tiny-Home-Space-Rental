@@ -13,7 +13,7 @@ class MessageContainer extends Component {
          < Divider />
       </div>
       <div className="message-segment-container">
-        <Segment className="message-segment" key="large" size="large" placeholder>
+        <Segment className="message-segment" key="medim" size="medium" placeholder>
           <Header icon>
             <Icon name='mail' />
             No messages to display

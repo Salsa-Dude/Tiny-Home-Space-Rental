@@ -169,7 +169,7 @@ class PropertyDetails extends Component {
         <div className="small-space"></div>
         <div className="property-info-container">
         <Grid columns='equal'>
-          <Grid.Column className="" width={10}>
+          <Grid.Column className="property-desc-box" width={10}>
             <p className="property-description">{this.props.property.description} {this.props.property.perks}</p>
           </Grid.Column>
           <Grid.Column width={5}>
@@ -192,6 +192,9 @@ class PropertyDetails extends Component {
                   </Feed.Event>
                 </Feed>
               </Card.Content>
+              <Button color='teal'>
+                Message Host
+              </Button>
             </Card>
           </Grid.Column>
         </Grid>
@@ -204,15 +207,17 @@ class PropertyDetails extends Component {
                 <div className="mapouter"><div className="gmap_canvas"><iframe id="gmap_canvas" src={`https://maps.google.com/maps?q=${this.props.property.city}&t=&z=13&ie=UTF8&iwloc=&output=embed`} scrolling="no"  ></iframe><a href="https://www.pureblack.de/webdesign/"></a></div></div>
             </div>
           </Grid.Column>
-          <Grid.Column className="reviews-container" width={6}>
+          <Grid.Column className="reviews-container" width={5}>
           <div className="review-div">
+          <Button basic color="blue" className="review-btn" floated='right'>+ Add Review</Button>
+          <h2>Reviews</h2>
+          <p><Rating icon='star' defaultRating={rating} maxRating={5} disabled /></p>
           <p>{this.props.property.reviews[0].review_content} -  <Label as='a' image>
-        <img src='https://react.semantic-ui.com/images/avatar/small/stevie.jpg' />
-        {reviewerName}
-      </Label> </p>
-          </div>
-        
-          <Rating icon='star' defaultRating={rating} maxRating={5} disabled /> 
+              <img src='https://react.semantic-ui.com/images/avatar/small/stevie.jpg' />
+              {reviewerName}
+              </Label> 
+          </p>
+          </div> 
           </Grid.Column>
         </Grid>
 

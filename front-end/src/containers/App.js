@@ -171,8 +171,7 @@ class App extends Component {
           <Route exact path="/myProperties" render={() => <MyPropertyContainer currentUser={this.state.currentUser} allUsers={this.state.allUsers} allTinyPlaces={this.state.allTinyPlaces}  />  } />
 
           <Route exact path="/messages" render={() => <MessageContainer />} />
-
-
+          
           <Route exact path="/login" render={ () => this.state.loading ? null : (this.state.currentUser ?
           
           <Redirect to="/profile" />  :  <LoginForm setCurrentUser={this.setCurrentUser} /> )}
