@@ -181,7 +181,7 @@ class PropertyDetails extends Component {
                 <Feed>
                   <Feed.Event>
                     <Feed.Label>
-                    <Image src='http://www.thatentertains.com/wp-content/uploads/2018/01/female-place-holder-profile-image.jpg' />
+                    <Image src='https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png' />
                     <span className="user-name">{this.state.userFirstName}</span>
                     </Feed.Label>
                     <Feed.Content>
