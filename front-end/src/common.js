@@ -1,6 +1,7 @@
 
 
 export const stateOptions = [
+  {key: 'none', value: 'none', text: 'Select choice'},
   { key: 'AL', value: 'AL', text: 'Alabama' },
   { key: 'AK', value: 'AK', text: 'Alaska' },
   { key: 'AZ', value: 'AZ', text: 'Arizona' },

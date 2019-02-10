@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import {connect} from 'react-redux'
+import {fetchingTinyHomes} from '../redux/actions'
 import SmallCard from '../components/SmallCard'
 import SearchCard from '../components/SearchCard'
 import SideBar from '../components/SideBar';
@@ -8,6 +10,10 @@ import '../searchContainer.css'
 class SearchContainer extends Component {
   constructor() {
     super()
+  }
+
+  componentDidMount() {
+    this.props.fetchHomes()
   }
 
   render() {
@@ -56,4 +62,13 @@ class SearchContainer extends Component {
   }
 }
 
-export default SearchContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchHomes: () => {dispatch(fetchingTinyHomes())}
+  }
+}
+
+
+
+
+export default connect(null, mapDispatchToProps)(SearchContainer);
