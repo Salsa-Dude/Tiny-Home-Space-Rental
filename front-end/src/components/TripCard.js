@@ -13,8 +13,7 @@ class TripCard extends Component {
       open: false,
       startDate: this.props.trip.checkin,
       endDate: this.props.trip.checkout,
-      modalOpen: false,
-      tripObject: null
+      modalOpen: false
     }
   }
 
@@ -78,38 +77,38 @@ class TripCard extends Component {
   }
 
   componentDidMount() {
-    this.props.allTinyPlaces.map(tinyPlace => {
-      if(tinyPlace.id === this.props.trip.property_id)
-        this.setState({
-          tripObject: tinyPlace
-        })
-    })
+    // this.props.allTinyPlaces.map(tinyPlace => {
+    //   if(tinyPlace.id === this.props.trip.property_id)
+    //     this.setState({
+    //       tripObject: tinyPlace
+    //     })
+    // })
   }
   
   render() {
-  
+    console.log(this.props.trip)
     const { open, dimmer } = this.state
     
     return (
-      this.state.tripObject ? (<div className="trip-card">
+     <div className="trip-card">
       <Card>
-        <Image src={this.state.tripObject.image} />
+        <Image src={this.props.trip.property.image} />
         <Card.Content>
-          <Card.Header>{this.state.tripObject.name}</Card.Header>
-          <Card.Meta>{this.state.tripObject.state}</Card.Meta>
-          <Card.Meta>{this.state.tripObject.city}</Card.Meta>
+          <Card.Header>{this.props.trip.property.name}</Card.Header>
+          <Card.Meta>{this.props.trip.property.state}</Card.Meta>
+          <Card.Meta>{this.props.trip.property.city}</Card.Meta>
           <Card.Description>Check In: {moment(this.props.trip.checkin).format("MM/DD/YYYY")}</Card.Description>
           <Card.Description>Check Out: {moment(this.props.trip.checkout).format("MM/DD/YYYY")}</Card.Description>
-          <Card.Description>${this.state.tripObject.price} per week</Card.Description>
+          <Card.Description>${this.props.trip.property.price} per week</Card.Description>
           <div className="right">
             <Icon link onClick={this.show('blurring')} name='edit' size='large' />
             
             <Modal dimmer={dimmer} open={open} onClose={this.close}>
               <Modal.Header>Update Trip</Modal.Header>
               <Modal.Content image>
-                <Image wrapped size='medium' src={this.state.tripObject.image} />
+                <Image wrapped size='medium' src={this.props.trip.property.image} />
                 <Modal.Description className="update-form">
-                <Header>{this.state.tripObject.city}, {this.state.tripObject.state}</Header>
+                <Header>{this.props.trip.property.city}, {this.props.trip.property.state}</Header>
                 <Form>
                   <Form.Field>
                     <label>Select Start Date: </label>
@@ -166,7 +165,7 @@ class TripCard extends Component {
             </div>
           </Card.Content>
         </Card>
-    </div>) : null
+    </div>
     )
   }
 }

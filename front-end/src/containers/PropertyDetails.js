@@ -37,9 +37,7 @@ class PropertyDetails extends Component {
     }
 
     this.props.bookLease(leaseData)
-
-
-
+    
     this.setState({ modalOpen: false })
   }
   
@@ -66,23 +64,10 @@ class PropertyDetails extends Component {
 
   componentDidMount() {
     this.props.fetchTinyHomes()
-    // fetch(`http://localhost:3000/api/v1/users`)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     data.find(user => {
-    //       if(user.id === this.userId) {
-    //         this.setState({
-    //           userFirstName: user.first_name
-    //         })
-    //       }
-    //     })
-    //   })
   }
   
   render() {
     let tinyHomeObj
-    // console.log(this.props.tinyHomes, "hey")
-    // console.log(localStorage.getItem('userId'))
     let rating;
     let reviewerName;
     
@@ -248,7 +233,7 @@ class PropertyDetails extends Component {
 
         </div>
       </Fragment>
-    ) : <h1>NO</h1>
+    ) : null
   }
 }
 

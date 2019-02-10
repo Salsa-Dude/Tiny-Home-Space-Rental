@@ -102,21 +102,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/profile" />} />
           <Route exact path="/properties" render={() => <SearchContainer/>} />
-          <Route exact path='/properties/:id' component={PropertyDetails}
-            // let propertyId = props.match.params.id
-            // console.log(propertyId)
-            // if(this.state.allTinyPlaces.length > 1) {
-            //   return <PropertyDetails allUsers={this.state.allUsers} makeLease={this.makeLease} currentUser=
-            //   // Check problem **********************
-            //   {this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
-            // } else {
-            //   return null;
-            // }
-           />
+          <Route exact path='/properties/:id' component={PropertyDetails} />
           <Route exact path="/profile" render={ () => 
             <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
-          <Route exact path="/trips" render={() => <TripContainer deleteTrip={this.deleteTrip} updateTrip={this.updateTrip} allTinyPlaces={this.state.allTinyPlaces} currentUser={this.state.currentUser} allUsers={this.state.allUsers} /> } />
+          <Route exact path="/trips" render={() => <TripContainer /> } />
 
           <Route exact path="/myProperties" render={() => <MyPropertyContainer currentUser={this.state.currentUser} allUsers={this.state.allUsers} allTinyPlaces={this.state.allTinyPlaces}  />  } />
 

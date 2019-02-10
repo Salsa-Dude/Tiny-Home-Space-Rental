@@ -11,6 +11,8 @@ const tinyHomesReducer = (state = [], action) => {
 
 const leaseReducer = (state = [], action) => {
   switch(action.type) {
+    case "FETCHED_LEASES": 
+      return action.leasesData
     case "ADD_LEASE": 
       return [...state, action.leaseData]
     default: 

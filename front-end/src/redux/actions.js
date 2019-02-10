@@ -17,6 +17,20 @@ const fetchedTinyHomes = (tinyHomesData) => {
 
 //////////////// LEASES /////////////////////////////////////////
 
+const fetchingLeases = () => {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/leases`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch(fetchLeases(data))
+      })
+  }
+}
+
+const fetchLeases = (leasesData) => {
+  return {type: "FETCHED_LEASES", leasesData }
+}
+
 
 const bookingLease = (data) => {
   return (dispatch) => {
@@ -39,4 +53,7 @@ const bookedLease = (leaseData) => {
 }
 
 
-export {fetchingTinyHomes, bookingLease}  
+
+
+
+export {fetchingTinyHomes, bookingLease, fetchingLeases}  
