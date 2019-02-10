@@ -35,6 +35,8 @@ class SearchContainer extends Component {
       heading: "Miami",
       tiny: true
     }
+
+    console.log(this.props.tinyHomes,'hello')
     
     return (
       <Fragment>
@@ -49,7 +51,7 @@ class SearchContainer extends Component {
         <div className="grid-box">
           <div className="ui four column grid">
             <div className="row">
-              {this.props.allTinyPlaces.map(place => {
+              {this.props.tinyHomes.map(place => {
                 return <SearchCard key={place.id} place={place} />
               })}
             </div>
@@ -62,6 +64,10 @@ class SearchContainer extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {tinyHomes: state.tinyHomes}
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     fetchHomes: () => {dispatch(fetchingTinyHomes())}
@@ -71,4 +77,4 @@ const mapDispatchToProps = dispatch => {
 
 
 
-export default connect(null, mapDispatchToProps)(SearchContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

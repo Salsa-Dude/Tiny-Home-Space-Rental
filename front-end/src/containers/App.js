@@ -42,15 +42,6 @@ class App extends Component {
         loading: false
       })
     }
-    fetch(`http://localhost:3000/api/v1/properties`)
-      .then(res => res.json())
-      .then(data => {
-        // if(this._isMounted) {
-          this.setState({
-            allTinyPlaces: data
-          })
-        // }
-      })
       fetch(`http://localhost:3000/api/v1/users`)
       .then(res => res.json())
       .then(data => {
@@ -152,7 +143,7 @@ class App extends Component {
       
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/profile" />} />
-          <Route exact path="/properties" render={() => <SearchContainer allTinyPlaces={this.state.allTinyPlaces} />} />
+          <Route exact path="/properties" render={() => <SearchContainer/>} />
           <Route exact path='/properties/:id' render={(props) => {
             let propertyId = props.match.params.id
             if(this.state.allTinyPlaces.length > 1) {
