@@ -9,8 +9,18 @@ const tinyHomesReducer = (state = [], action) => {
   }
 }
 
+const leaseReducer = (state = [], action) => {
+  switch(action.type) {
+    case "ADD_LEASE": 
+      return [...state, action.leaseData]
+    default: 
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
-  tinyHomes: tinyHomesReducer
+  tinyHomes: tinyHomesReducer,
+  leases: leaseReducer
 })
 
 export default rootReducer

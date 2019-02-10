@@ -65,47 +65,6 @@ class App extends Component {
     })
   }
 
-  makeLease = (propertyObj) => {
-    let ownerUser = this.state.allTinyPlaces.find(tinyPlace => {
-      return tinyPlace.id === propertyObj.propertyId
-    })
-
-    let data = {
-      checkin: propertyObj.startDate,
-      checkout: propertyObj.endDate,
-      owner_id: ownerUser.user_id,
-      renter_id: this.state.currentUser.id,
-      property_id: propertyObj.propertyId
-    }
-
-    fetch(`http://localhost:3000/api/v1/leases`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        Accept: 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(res => res.json())
-    .then(data => {
-      let newLease = {
-        checkin: data.checkin,
-        checkout: data.checkout,
-        id: data.id,
-        owner_id: data.owner_id,
-        property_id: data.property_id,
-        renter_id: data.renter_id
-      }
-      
-      let copyAllUsers = [...this.state.allUsers]
-
-      let foundUser = copyAllUsers.find(user => {
-        return user.id === this.state.currentUser.id
-      })
-
-      foundUser.rentals.push(newLease)
-      
-    })
-  }
 
   deleteTrip = (tripId) => {
 
@@ -136,7 +95,6 @@ class App extends Component {
   }
 
   render() {  
-    console.log(this.state.allUsers)
     return (
       <Fragment>
         {this.props.location.pathname !== '/login' ? <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser}  /> : null }
@@ -144,16 +102,17 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Redirect to="/profile" />} />
           <Route exact path="/properties" render={() => <SearchContainer/>} />
-          <Route exact path='/properties/:id' render={(props) => {
-            let propertyId = props.match.params.id
-            if(this.state.allTinyPlaces.length > 1) {
-              return <PropertyDetails allUsers={this.state.allUsers} makeLease={this.makeLease} currentUser=
-              // Check problem **********************
-              {this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
-            } else {
-              return null;
-            }
-          }} />
+          <Route exact path='/properties/:id' component={PropertyDetails}
+            // let propertyId = props.match.params.id
+            // console.log(propertyId)
+            // if(this.state.allTinyPlaces.length > 1) {
+            //   return <PropertyDetails allUsers={this.state.allUsers} makeLease={this.makeLease} currentUser=
+            //   // Check problem **********************
+            //   {this.state.currentUser} property={this.state.allTinyPlaces.find(p => p.id == propertyId)} />
+            // } else {
+            //   return null;
+            // }
+           />
           <Route exact path="/profile" render={ () => 
             <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
           />
@@ -172,5 +131,7 @@ class App extends Component {
     )
   }
 }
+
+
 
 export default withRouter(App);

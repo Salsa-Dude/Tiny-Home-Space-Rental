@@ -38,6 +38,7 @@ class LoginForm extends Component {
         console.log(data)
         this.props.setCurrentUser(data.user_info)
         localStorage.setItem('token', data.token)
+        localStorage.setItem('userId', data.user_info.id)
       }
     })
   }
