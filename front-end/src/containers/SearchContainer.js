@@ -10,10 +10,14 @@ import '../searchContainer.css'
 class SearchContainer extends Component {
   constructor() {
     super()
+    this.state ={
+      places: []
+    }
   }
 
   componentDidMount() {
     this.props.fetchHomes()
+   
   }
 
   render() {
