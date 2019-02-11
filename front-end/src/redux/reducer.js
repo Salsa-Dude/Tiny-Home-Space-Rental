@@ -15,6 +15,12 @@ const leaseReducer = (state = [], action) => {
       return action.leasesData
     case "ADD_LEASE": 
       return [...state, action.leaseData]
+    case "DELETE_LEASE": 
+      let findTrip = state.find(trip => trip.id == action.tripData.id)
+      let index = state.indexOf(findTrip)
+      let tripsCopy = [...state]
+      tripsCopy.splice(index, 1)
+      return tripsCopy
     default: 
       return state
   }

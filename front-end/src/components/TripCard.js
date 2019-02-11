@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import {deletingLease} from '../redux/actions'
 import { Card, Image, Rating, Icon, Button, Header, Modal, Form } from 'semantic-ui-react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -69,20 +71,11 @@ class TripCard extends Component {
   handleClose = () => this.setState({ modalOpen: false })
 
   deleteTrip = () => {
-    this.setState({ 
-      modalOpen: false,
-      tripObject: null
-    })
-    this.props.deleteTrip(this.props.trip.id)
+    this.props.deleteLease(this.props.trip.id)
   }
 
   componentDidMount() {
-    // this.props.allTinyPlaces.map(tinyPlace => {
-    //   if(tinyPlace.id === this.props.trip.property_id)
-    //     this.setState({
-    //       tripObject: tinyPlace
-    //     })
-    // })
+  
   }
   
   render() {
@@ -170,4 +163,10 @@ class TripCard extends Component {
   }
 }
 
-export default TripCard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteLease: (id) => {dispatch(deletingLease(id))}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(TripCard);

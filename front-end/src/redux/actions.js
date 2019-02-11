@@ -52,8 +52,23 @@ const bookedLease = (leaseData) => {
   return {type: "ADD_LEASE", leaseData}
 }
 
+const deletingLease = (tripId) => {
+  return (dispatch) => {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/leases/${tripId}`, {
+      method: "DELETE",
+    }).then(res => res.json())
+    .then(data => {
+      dispatch(deleteLease(data))
+    })
+  }
+}
+
+const deleteLease = (tripData) => {
+  return {type: "DELETE_LEASE", tripData }
+}
 
 
 
 
-export {fetchingTinyHomes, bookingLease, fetchingLeases}  
+
+export {fetchingTinyHomes, bookingLease, fetchingLeases, deletingLease}  
