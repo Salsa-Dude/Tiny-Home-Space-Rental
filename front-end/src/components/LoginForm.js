@@ -19,7 +19,7 @@ class LoginForm extends Component {
   };
 
   handleLoginSubmit = () => {
-    fetch(`http://localhost:3000/api/v1/login`, {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

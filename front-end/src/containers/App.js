@@ -24,7 +24,7 @@ class App extends Component {
   componentDidMount() {
     let token = localStorage.getItem('token')
     if (token) {
-      fetch(`http://localhost:3000/api/v1/profile`, {
+      fetch(`https://tinyhome-backend.herokuapp.com/api/v1/profile`, {
         method: "GET",
         headers: {
           "Authentication" : `Bearer ${token}`
@@ -42,7 +42,7 @@ class App extends Component {
         loading: false
       })
     }
-      fetch(`http://localhost:3000/api/v1/users`)
+      fetch(`https://tinyhome-backend.herokuapp.com/api/v1/users`)
       .then(res => res.json())
       .then(data => {
         // if(this._isMounted) {
@@ -70,7 +70,7 @@ class App extends Component {
 
     console.log(this.state.allUsers)
     
-    fetch(`http://localhost:3000/api/v1/leases/${tripId}`, {
+    fetch(`https://tinyhome-backend.herokuapp.com/${tripId}`, {
       method: "DELETE",
     }).then(res => res.json())
     .then(data => {

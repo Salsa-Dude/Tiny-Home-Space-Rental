@@ -38,7 +38,7 @@ class TripCard extends Component {
       renter_id: this.props.trip.renter_id,
       property_id: this.props.trip.property_id
     }
-    fetch(`http://localhost:3000/api/v1/leases/${this.props.trip.id}`, {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/leases/${this.props.trip.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"

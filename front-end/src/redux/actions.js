@@ -3,7 +3,7 @@
 
 const fetchingTinyHomes = () => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/properties`)
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/properties`)
       .then(res => res.json())
       .then(data => {
         dispatch(fetchedTinyHomes(data))
@@ -19,7 +19,7 @@ const fetchedTinyHomes = (tinyHomesData) => {
 
 const fetchingLeases = () => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/leases`)
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/leases`)
       .then(res => res.json())
       .then(data => {
         dispatch(fetchLeases(data))
@@ -34,7 +34,7 @@ const fetchLeases = (leasesData) => {
 
 const bookingLease = (data) => {
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/leases`, {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/leases`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
