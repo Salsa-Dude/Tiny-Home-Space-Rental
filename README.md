@@ -4,3 +4,7 @@ Tiny Home Parkway is a online community marketplace for people to list, discover
 + Designed the database schema and configured ActiveRecord associations
 + Implemented user interface employing React and Redux with CSS Modules and Semantic-React for styling
 + Utilized JSON web tokens and localStorage to store encrypted user information client-side
+
+Guest Login <br>
+username: jarias3 <br>
+password: 123
