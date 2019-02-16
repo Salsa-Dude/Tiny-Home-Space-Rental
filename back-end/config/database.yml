@@ -80,17 +80,10 @@ test:
 #
 
 
-# production:
-#   <<: *default
-#   database: Back-End_production
-#   username: Back-End
-#   password: <%= ENV['BACK-END_DATABASE_PASSWORD'] %>
-
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['RDS_DB_NAME'] %>
-  username: <%= ENV['RDS_USERNAME'] %>
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_HOSTNAME'] %>
-  port: <%= ENV['RDS_PORT'] %>
+  <<: *default
+  database: Back-End_production
+  username: Back-End
+  password: <%= ENV['BACK-END_DATABASE_PASSWORD'] %>
+
+
