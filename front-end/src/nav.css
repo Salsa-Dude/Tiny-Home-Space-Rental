@@ -6,7 +6,7 @@ div.ui.huge.pointing.secondary.menu {
 
 .ui.secondary.pointing.menu .active.item  {
   font-weight: 400 !important;
-  border: none !important;
+  border-color: transparent !important;
 
   
 }
