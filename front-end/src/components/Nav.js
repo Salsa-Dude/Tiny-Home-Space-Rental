@@ -100,12 +100,12 @@ class Nav extends Component {
               className="logo"
               // active={pathname === "/profile"}
             />
-            <Menu.Item
+            {/* <Menu.Item
               as={NavLink}
               to="/profile"
               name="Home"
               // active={pathname === "/profile"}
-            />
+            /> */}
              <Menu.Item
             name='Explore'
             as={NavLink}
@@ -129,12 +129,12 @@ class Nav extends Component {
               // active={pathname === "/myProperties"}
               // onClick={this.handleItemClick}
             />
-            <Menu.Item
+            {/* <Menu.Item
               name='Inbox'
               as={NavLink}
               to="/messages"
               // active={pathname === "/messages"}
-            />
+            /> */}
               <Menu.Item as={NavLink} to="/" name="Logout" onClick={this.logout} />
             </Menu.Menu>
           </Fragment>
