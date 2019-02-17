@@ -3,3 +3,24 @@ div.ui.huge.pointing.secondary.menu {
   padding-left: 5%;
   padding-right: 5%;
 }
+
+.ui.secondary.pointing.menu .active.item  {
+  font-weight: 400 !important;
+  border: none !important;
+
+  
+}
+
+.ui.secondary.pointing.menu .item {
+  border-bottom-style: none;
+
+}
+
+.logo {
+  color: #E33258!important;
+  font-family: 'Indie Flower', cursive;
+  font-weight: 700;
+  font-size: 1.1em
+
+}
+

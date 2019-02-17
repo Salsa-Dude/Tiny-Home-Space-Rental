@@ -81,7 +81,6 @@ class Nav extends Component {
     }
     
     const loginModal = {
-      border: 'solid red',
       width: '30rem'
     }
     
@@ -96,8 +95,9 @@ class Nav extends Component {
           <Fragment>
              <Menu.Item
               as={NavLink}
-              to="/"
+              to="/home"
               name="Tinyhome"
+              className="logo"
               // active={pathname === "/profile"}
             />
             <Menu.Item
@@ -105,6 +105,11 @@ class Nav extends Component {
               to="/profile"
               name="Home"
               // active={pathname === "/profile"}
+            />
+             <Menu.Item
+            name='Explore'
+            as={NavLink}
+            to="/properties"
             />
             <Menu.Item
               name='Trips'
@@ -114,6 +119,9 @@ class Nav extends Component {
               
               // onClick={this.handleItemClick}
             />
+            
+          
+            <Menu.Menu position="right">
             <Menu.Item
               name='My Properties'
               as={NavLink}
@@ -121,23 +129,22 @@ class Nav extends Component {
               // active={pathname === "/myProperties"}
               // onClick={this.handleItemClick}
             />
-          
-            <Menu.Menu position="right">
             <Menu.Item
               name='Inbox'
               as={NavLink}
               to="/messages"
               // active={pathname === "/messages"}
             />
-              <Menu.Item to="/logout" name="Logout" onClick={this.logout} />
+              <Menu.Item as={NavLink} to="/" name="Logout" onClick={this.logout} />
             </Menu.Menu>
           </Fragment>
         ) : (
           <Fragment>
              <Menu.Item
               as={NavLink}
-              to="/"
+              to="/home"
               name="Tinyhome"
+              className="logo"
               // active={pathname === "/profile"}
             />
              <Menu.Item
@@ -145,9 +152,9 @@ class Nav extends Component {
             as={NavLink}
             to="/properties"
             />
-            <Menu.Item>
+            {/* <Menu.Item>
               <Input size='small' className='icon' icon='search' placeholder='Search...' />
-            </Menu.Item>
+            </Menu.Item> */}
 
              <Menu.Menu position="right">
 

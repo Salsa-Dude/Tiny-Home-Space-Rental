@@ -101,8 +101,8 @@ class App extends Component {
         {this.props.location.pathname !== '/login' ? <Nav/> : null }
       
         <Switch>
-          <Route exact path="/logout" render={() => <Redirect to="/" />} />
-          <Route exact path="/" render={() => < LandingPage />} />
+          <Route exact path="/" render={() => <LandingPage /> } />
+          <Route exact path="/home" render={() => <LandingPage />} />
           <Route exact path="/properties" render={() => <SearchContainer/>} />
           <Route exact path='/properties/:id' component={PropertyDetails} />
           <Route exact path="/profile" render={ () => 
@@ -114,9 +114,9 @@ class App extends Component {
 
           <Route exact path="/messages" render={() => <MessageContainer />} />
           
-          {/* <Route exact path="/login" render={ () => localStorage.getItem('token') ? 
-            <Home/>  : <Redirect to="/" /> }
-          /> */}
+          <Route exact path="/login" render={ () => localStorage.getItem('token') ? 
+            <LandingPage />  : <Redirect to="/" /> }
+          />
         </Switch>
       </Fragment>
     )
