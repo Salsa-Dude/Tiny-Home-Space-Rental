@@ -4,7 +4,7 @@ import {fetchingLeases} from '../redux/actions'
 import { Divider } from 'semantic-ui-react'
 import TripCard from '../components/TripCard'
 import '../tripContainer.css'
-import { localeData } from 'moment';
+// import { localeData } from 'moment';
 
 class TripContainer extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class TripContainer extends Component {
   render() {
   
     const userTrips = this.props.leases.filter(lease => {
-      return lease.renter_id === parseInt(localStorage.getItem('userId'))
+      return lease.renter_id === parseInt(localStorage.getItem('currentUser'))
     })
 
     return (

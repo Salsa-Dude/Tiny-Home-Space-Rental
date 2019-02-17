@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {updatingLease} from '../redux/actions'
 import {deletingLease} from '../redux/actions'
 import { Card, Image, Rating, Icon, Button, Header, Modal, Form } from 'semantic-ui-react'
 import DatePicker from "react-datepicker";
@@ -108,7 +109,7 @@ class TripCard extends Component {
                     <DatePicker
                       selected={ this.state.startDate}
                       onChange={ this.startHandleChange }
-                      minDate={this.state.startDate}
+                      // minDate={this.state.startDate}
                     />
                   </Form.Field>
                   <Form.Field>
@@ -116,7 +117,7 @@ class TripCard extends Component {
                     <DatePicker
                       selected={ this.state.endDate }
                       onChange={ this.endHandleChange }
-                      minDate={this.state.endDate}
+                      // minDate={this.state.endDate}
                     />
                   </Form.Field>
                 </Form>
@@ -165,7 +166,8 @@ class TripCard extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteLease: (id) => {dispatch(deletingLease(id))}
+    deleteLease: (id) => {dispatch(deletingLease(id))},
+    updateLease: (id) => {dispatch(updatingLease(id))}
   }
 }
 

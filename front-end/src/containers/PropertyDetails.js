@@ -32,7 +32,7 @@ class PropertyDetails extends Component {
       checkin: this.state.startDate,
       checkout: this.state.endDate,
       owner_id: getTinyHomeObj.user_id,
-      renter_id: parseInt(localStorage.getItem('userId')),
+      renter_id: parseInt(localStorage.getItem('currentUser')),
       property_id: parseInt(this.props.match.params.id)
     }
 
