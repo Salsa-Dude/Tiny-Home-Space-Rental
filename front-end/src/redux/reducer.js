@@ -1,5 +1,17 @@
 import {combineReducers} from 'redux'
 
+
+const loginReducer = (oldState = null, action) => {
+  switch(action.type) {
+    case "LOGGED_IN":
+      return action.user
+    case "LOGOUT":
+      return action.user
+    default: 
+      return oldState
+  }
+}
+
 const tinyHomesReducer = (state = [], action) => {
   switch(action.type) {
     case "FETCHED_TINY_HOMES":
@@ -28,7 +40,8 @@ const leaseReducer = (state = [], action) => {
 
 const rootReducer = combineReducers({
   tinyHomes: tinyHomesReducer,
-  leases: leaseReducer
+  leases: leaseReducer,
+  login: loginReducer
 })
 
 export default rootReducer

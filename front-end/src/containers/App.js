@@ -8,6 +8,7 @@ import PropertyDetails from './PropertyDetails'
 import TripContainer  from './TripContainer'
 import MyPropertyContainer from './MyPropertyContainer';
 import MessageContainer from './MessageContainer';
+import LandingPage from './LandingPage'
 
 
 class App extends Component {
@@ -97,14 +98,15 @@ class App extends Component {
   render() {  
     return (
       <Fragment>
-        {this.props.location.pathname !== '/login' ? <Nav logged_in={this.state.currentUser} setCurrentUser={this.setCurrentUser}  /> : null }
+        {this.props.location.pathname !== '/login' ? <Nav/> : null }
       
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/profile" />} />
+          <Route exact path="/logout" render={() => <Redirect to="/" />} />
+          <Route exact path="/" render={() => < LandingPage />} />
           <Route exact path="/properties" render={() => <SearchContainer/>} />
           <Route exact path='/properties/:id' component={PropertyDetails} />
           <Route exact path="/profile" render={ () => 
-            <Home currentUser={this.state.currentUser} allTinyPlaces={this.allTinyPlaces} />}  
+            <Home />}  
           />
           <Route exact path="/trips" render={() => <TripContainer /> } />
 
@@ -112,10 +114,9 @@ class App extends Component {
 
           <Route exact path="/messages" render={() => <MessageContainer />} />
           
-          <Route exact path="/login" render={ () => this.state.loading ? null : (this.state.currentUser ?
-          
-          <Redirect to="/profile" />  :  <LoginForm setCurrentUser={this.setCurrentUser} /> )}
-          />
+          {/* <Route exact path="/login" render={ () => localStorage.getItem('token') ? 
+            <Home/>  : <Redirect to="/" /> }
+          /> */}
         </Switch>
       </Fragment>
     )

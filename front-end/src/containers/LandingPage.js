@@ -1,61 +1,15 @@
-import React, { Component,Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Button, Form, Message,  Container, Divider, Grid, Header, Icon, Image, List, Menu, Responsive, Segment,
-Sidebar, Visibility, } from 'semantic-ui-react'
-
-import styles from '../loginForm.css'
+  Sidebar, Visibility, } from 'semantic-ui-react'
 
 
-class LoginForm extends Component {
-  constructor() {
-    super()
-    this.state = {
-      username: "",
-      password: ""
-    }
-  }
-  
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value });
-  };
 
-  handleLoginSubmit = () => {
-    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
-      })
-    }).then(res => res.json())
-    .then(data => {
-      if (data.error) {
-        alert('Incorrect')
-      } else {
-        // set the Current User
-        console.log(data)
-        this.props.setCurrentUser(data.user_info)
-        localStorage.setItem('token', data.token)
-        localStorage.setItem('userId', data.user_info.id)
-      }
-    })
-  }
-
-  hideFixedMenu = () => this.setState({ fixed: false })
-  showFixedMenu = () => this.setState({ fixed: true })
-  
+class LandingPage extends Component {
   render() {
-    
-
-    const { children } = this.props
-    const { fixed } = this.state
-    
     return (
       <Fragment>
-        {/* <Responsive minWidth={Responsive.onlyTablet.minWidth}> */}
-          {/* <Visibility className="p"
+        {/* <Responsive minWidth={Responsive.onlyTablet.minWidth}>
+          <Visibility className="p"
             once={false}
             onBottomPassed={this.showFixedMenu}
             onBottomPassedReverse={this.hideFixedMenu}
@@ -70,8 +24,8 @@ class LoginForm extends Component {
                 pointing={!fixed}
                 secondary={!fixed}
                 size='large'
-              >
-                <Container>
+              > */}
+                {/* <Container>
                   <Menu.Item className="login-menu" as='a' active>
                     Home
                   </Menu.Item>
@@ -86,17 +40,17 @@ class LoginForm extends Component {
                       Sign Up
                     </Button>
                   </Menu.Item>
-                </Container>
-              </Menu> */}
-              {/* <div className="jumbo-container">
+                </Container> */}
+              {/* </Menu> */}
+              <div className="jumbo-container p">
               <div className="jumbo">
                 <div className="ui grid">
                   <div className="row">
                     <div className="ten wide column login-heading-container">
                      <h1 className="landing-header">Live Simply So That Others May Simply Live</h1>
                      <p className="landing-solgan">Travel and Explore safely with your tiny home or van</p>
-                      <div className="login-container"> */}
-                      <Form className="login-form"
+                      <div className="login-container">
+                      {/* <Form className="login-form"
                         onSubmit={this.handleLoginSubmit}
                         size="big"
                         key="big"
@@ -109,8 +63,8 @@ class LoginForm extends Component {
                         />
                         <Form.Field>
                         <Form.Input
-                            placeholder="Email"
-                            name="email"
+                            placeholder="username"
+                            name="username"
                             onChange={this.handleChange}
                             value={this.state.username}
                           />
@@ -126,18 +80,18 @@ class LoginForm extends Component {
                         </Form.Field>
                         
                         <Button size="big" className="login-btn" fluid type="submit">Get Started</Button>
-                      </Form>
-                      {/* </div> */}
+                      </Form> */}
+                      </div>
                       
-                    {/* </div> */}
-                  {/* </div> */}
-                {/* </div> */}
-              {/* </div> */}
-              {/* </div> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
 
               
-       {/* </Segment> */}
-         {/* </Visibility> */}
+       {/* </Segment>
+         </Visibility> */}
 
         {/* {children} */}
         {/* </Responsive> */}
@@ -146,4 +100,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default LandingPage

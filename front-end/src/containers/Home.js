@@ -64,11 +64,11 @@ class Home extends Component {
     }
     
     return (
-      this.props.currentUser ? (
+       (
         <Fragment>
         <div className="home-container">
         <div className="greeting-heading">
-          <h2>What can we help you find, {this.props.currentUser.first_name}? </h2>
+          {/* <h2>What can we help you find, {this.props.currentUser.first_name}? </h2> */}
           <div className="helpBox">
             <SmallCard tinyhome={tinyParkingInfo} fetchParkingInfo={this.fetchTinyParking} />
             <SmallCard tinyhome={vanParkingInfo} />
@@ -84,7 +84,7 @@ class Home extends Component {
         </div>
         </div>
         </Fragment>
-      ) : <Redirect to="/login" />
+      ) 
     )
   }
 }
