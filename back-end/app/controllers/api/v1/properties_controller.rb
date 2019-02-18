@@ -9,7 +9,14 @@ class Api::V1::PropertiesController < ApplicationController
     render json: @property
   end
 
-  def test 
-    
+  def update
+    @property = Property.all.find(params[:id]).update(property_params)
+    render json: @property
+  end
+
+  private
+  
+  def property_params
+    params.require(:property).permit(:name, :image, :address, :city, :state, :description, :perks, :notes, :price)
   end
 end

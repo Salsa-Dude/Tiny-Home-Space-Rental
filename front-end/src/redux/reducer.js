@@ -42,6 +42,14 @@ const propertyReducer = (state = [], action) => {
   switch(action.type) {
     case "FETCHED_PROPERTIES":
       return action.propertiesData
+    case "UPDATE_PROPERTY":
+    return state.map(property => {
+      if(property.id === action.propertyData.id) {
+        return action.propertyData
+      } else {
+        return property
+      }
+    })
     default: 
       return state
   }

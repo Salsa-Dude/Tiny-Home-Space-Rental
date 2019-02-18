@@ -1,4 +1,6 @@
 import React, { Component, Fragment } from 'react'
+import {updatingProperties} from '../redux/actions'
+import {connect} from 'react-redux'
 import { Card, Image, Rating, Icon, Button, Header, Modal, Form, Item, Divider } from 'semantic-ui-react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,6 +13,7 @@ class MyPropertyCard extends Component {
     this.state = {
       open: false,
       modalOpen: false,
+      propertyId: this.props.property.id,
       propertyName: this.props.property.name,
       propertyAddress: this.props.property.address,
       propertyCity: this.props.property.city,
@@ -19,6 +22,25 @@ class MyPropertyCard extends Component {
       propertyNotes: this.props.property.notes,
       propertyPrice: this.props.property.price
     }
+  }
+
+  updateProperty = () => {
+    let data = {
+      id: this.state.propertyId,
+      name: this.state.propertyName,
+      address: this.state.propertyAddress,
+      city: this.state.propertyCity,
+      description: this.state.propertyDescription,
+      perks: this.state.propertyPerks,
+      notes: this.state.propertyNotes,
+      price: this.state.propertyPrice
+    }
+
+    this.props.updateProperty(data)
+
+    this.setState({ 
+      open: false
+    })
   }
 
   nameChange = (e) => {
@@ -136,8 +158,8 @@ class MyPropertyCard extends Component {
                 positive
                 icon='checkmark'
                 labelPosition='right'
-                content="Update Course"
-                onClick={this.updateCourse}
+                content="Update Property"
+                onClick={this.updateProperty}
               />
             </Modal.Actions>
           </Modal>
@@ -158,4 +180,12 @@ class MyPropertyCard extends Component {
   }
 }
 
-export default MyPropertyCard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateProperty: (data) => {dispatch(updatingProperties(data))}
+  }
+}
+
+
+
+export default connect(null, mapDispatchToProps)(MyPropertyCard);

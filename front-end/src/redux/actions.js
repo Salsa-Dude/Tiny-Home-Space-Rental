@@ -136,9 +136,29 @@ const fetchProperties = (propertiesData) => {
   return {type: "FETCHED_PROPERTIES", propertiesData }
 }
 
+const updatingProperties = (propertyData) => {
+  return (dispatch) => {
+    // console.log(propertyData.id)
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/properties/${propertyData.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(propertyData)
+    }).then(res => res.json())
+    .then(data => {
+      dispatch(updatedProperty(data))
+    })
+  }
+}
+
+const updatedProperty = (propertyData) => {
+  return {type: "UPDATE_PROPERTY", propertyData}
+}
 
 
 
 
 
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingLease, deletingLease}  
+
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, updatingLease, deletingLease}  
