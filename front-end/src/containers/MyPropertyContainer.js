@@ -28,7 +28,7 @@ class MyPropertyContainer extends Component {
             <div className="inner-properties-container">
               <Item.Group>
                 {userProperties.map(property => {
-                  return <MyPropertyCard allTinyPlaces={this.props.allTinyPlaces} key={property.id} property={property} />
+                  return <MyPropertyCard key={property.id} property={property} />
                 })}
               </Item.Group>
             </div>
