@@ -110,7 +110,7 @@ class App extends Component {
           />
           <Route exact path="/trips" render={() => <TripContainer /> } />
 
-          <Route exact path="/myProperties" render={() => <MyPropertyContainer currentUser={this.state.currentUser} allUsers={this.state.allUsers} allTinyPlaces={this.state.allTinyPlaces}  />  } />
+          <Route exact path="/myProperties" render={() => <MyPropertyContainer/>  } />
 
           <Route exact path="/messages" render={() => <MessageContainer />} />
           

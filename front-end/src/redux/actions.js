@@ -119,8 +119,26 @@ const deleteLease = (tripData) => {
   return {type: "DELETE_LEASE", tripData }
 }
 
+//////////////// PROPERTIES /////////////////////////////////////////
+
+
+const fetchingProperties = () => {
+  return (dispatch) => {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/properties`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch(fetchProperties(data))
+      })
+  }
+}
+
+const fetchProperties = (propertiesData) => {
+  return {type: "FETCHED_PROPERTIES", propertiesData }
+}
 
 
 
 
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, updatingLease, deletingLease}  
+
+
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingLease, deletingLease}  

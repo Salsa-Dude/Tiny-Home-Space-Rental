@@ -38,10 +38,20 @@ const leaseReducer = (state = [], action) => {
   }
 }
 
+const propertyReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_PROPERTIES":
+      return action.propertiesData
+    default: 
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   tinyHomes: tinyHomesReducer,
   leases: leaseReducer,
-  login: loginReducer
+  login: loginReducer,
+  properties: propertyReducer
 })
 
 export default rootReducer
