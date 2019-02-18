@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { NavLink} from "react-router-dom";
 import { Button, Form, Message,  Container, Divider, Grid, Header, Icon, Image, List, Menu, Responsive, Segment,
   Sidebar, Visibility, } from 'semantic-ui-react'
 
@@ -8,86 +9,22 @@ class LandingPage extends Component {
   render() {
     return (
       <Fragment>
-        {/* <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-          <Visibility className="p"
-            once={false}
-            onBottomPassed={this.showFixedMenu}
-            onBottomPassedReverse={this.hideFixedMenu}
-          > */}
-            {/* <Segment 
-              textAlign='center'
-              style={{ minHeight: 700, padding: '1em 0em' }}
-              vertical
-            > */}
-              {/* <Menu
-                fixed={fixed ? 'top' : null}
-                pointing={!fixed}
-                secondary={!fixed}
-                size='large'
-              > */}
-                {/* <Container>
-                  <Menu.Item className="login-menu" as='a' active>
-                    Home
-                  </Menu.Item>
-                  <Menu.Item className="login-menu" as='a'>About</Menu.Item>
-                  <Menu.Item className="login-menu" as='a'>Mission</Menu.Item>
-                  <Menu.Item className="login-menu" as='a'></Menu.Item>
-                  <Menu.Item position='right'>
-                    <Menu.Item className="login-menu" as='a' >
-                      Log in
-                    </Menu.Item>
-                    <Button className="login-btn" as='a' style={{ marginLeft: '0.5em' }}>
-                      Sign Up
-                    </Button>
-                  </Menu.Item>
-                </Container> */}
-              {/* </Menu> */}
-              <div className="jumbo-container p">
-              <div className="jumbo">
-                <div className="ui grid">
-                  <div className="row">
-                    <div className="ten wide column login-heading-container">
-                     <h1 className="landing-header">Live Simply So That Others May Simply Live</h1>
-                     <p className="landing-solgan">Travel and Explore safely with your tiny home or van</p>
-                      <div className="login-container">
-                      {/* <Form className="login-form"
-                        onSubmit={this.handleLoginSubmit}
-                        size="big"
-                        key="big"
-                        loading={this.props.authenticatingUser}
-                        error={this.props.failedLogin}
-                      >
-                        <Message
-                          error
-                          header={this.props.failedLogin ? this.props.error : null}
-                        />
-                        <Form.Field>
-                        <Form.Input
-                            placeholder="username"
-                            name="username"
-                            onChange={this.handleChange}
-                            value={this.state.username}
-                          />
-                        </Form.Field>
-                        <Form.Field>
-                        <Form.Input
-                          type="password"
-                          placeholder="password"
-                          name="password"
-                          onChange={this.handleChange}
-                          value={this.state.password}
-                        />
-                        </Form.Field>
-                        
-                        <Button size="big" className="login-btn" fluid type="submit">Get Started</Button>
-                      </Form> */}
-                      </div>
-                      
-                    </div>
+        
+        <div className="jumbo-container p">
+          <div className="jumbo">
+            <div className="ui grid">
+              <div className="row">
+                <div className="ten wide column login-heading-container">
+                  <h1 className="landing-header">Live Simply So That Others May Simply Live</h1>
+                  <p className="landing-solgan">Travel and Explore safely with your tiny home or van</p>
+                  <div className="login-container">
+                    <Button size="huge" className="home-btn"  as={NavLink} to="/properties" >Explore</Button>
                   </div>
                 </div>
               </div>
-              </div>
+            </div>
+          </div>
+        </div>
 
               
        {/* </Segment>

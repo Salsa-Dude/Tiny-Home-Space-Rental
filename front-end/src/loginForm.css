@@ -49,4 +49,16 @@
 
 .landing-solgan {
   font-size: 18px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-container {
+ 
+  text-align: center;
+}
+
+.home-btn {
+  background-color: #E33258 !important;
+  color: white !important;
 }
