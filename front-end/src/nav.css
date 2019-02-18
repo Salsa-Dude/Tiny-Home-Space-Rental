@@ -24,3 +24,11 @@ div.ui.huge.pointing.secondary.menu {
 
 }
 
+.loginHeading {
+  text-align: center;
+}
+
+.login-btn {
+  background-color: #E33258!important;
+}
+

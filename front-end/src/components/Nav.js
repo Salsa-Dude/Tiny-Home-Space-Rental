@@ -172,7 +172,7 @@ class Nav extends Component {
           >
             <div style={loginContainer}>
               <div className="loginHeading">
-                <h3>Login In to Your SkillHub Account</h3>
+                <h3>Login In to Your TinyHome Account</h3>
               </div>
               <Divider />
               <Form
@@ -206,7 +206,7 @@ class Nav extends Component {
                     value={this.state.password}
                   />
                 </Form.Field>
-                <Button size="big" color="teal" style={loginBtn} fluid type="submit">Login</Button>
+                <Button size="big" className="login-btn" style={loginBtn} fluid type="submit">Login</Button>
                 </Form>
                 <Divider />
                 {/* <div className="switchForm">
