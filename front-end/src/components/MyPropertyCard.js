@@ -36,10 +36,25 @@ class MyPropertyCard extends Component {
       price: this.state.propertyPrice
     }
 
-    this.props.updateProperty(data)
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/properties/${data.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+    .then(data => console.log(data))
 
     this.setState({ 
-      open: false
+      open: false,
+      propertyName: this.state.propertyName,
+      propertyAddress: this.state.propertyAddress,
+      propertyCity: this.state.propertyCity,
+      propertyDescription: this.state.propertyDescription,
+      propertyPerks: this.state.propertyPerks,
+      propertyNotes: this.state.propertyNotes,
+      propertyPrice: this.state.propertyPrice
     })
   }
 
@@ -111,14 +126,14 @@ class MyPropertyCard extends Component {
         <Item>
           <Item.Image size='medium' src={this.props.property.image} />
           <Item.Content>
-            <Item.Header as='a'>Name: <span class="property-form-data">{this.props.property.name}</span></Item.Header>
+            <Item.Header as='a'>Name: <span class="property-form-data">{this.state.propertyName}</span></Item.Header>
             <Item.Description className="property-description-box">
               <p>State: <span class="property-form-data">{this.props.property.state}</span></p>
-              <p>City: <span class="property-form-data">{this.props.property.city}</span></p>
-              <p>Description: <span class="property-form-data">{this.props.property.description}</span></p>
-              <p>Perks: <span class="property-form-data">{this.props.property.perks}</span></p>
-              <p>Rules: <span class="property-form-data">{this.props.property.notes}</span></p>
-              <p>Price: <span class="property-form-data">${this.props.property.price}</span></p>
+              <p>City: <span class="property-form-data">{this.state.propertyCity}</span></p>
+              <p>Description: <span class="property-form-data">{this.state.propertyDescription}</span></p>
+              <p>Perks: <span class="property-form-data">{this.state.propertyPerks}</span></p>
+              <p>Rules: <span class="property-form-data">{this.state.propertyNotes}</span></p>
+              <p>Price: <span class="property-form-data">${this.state.propertyPrice}</span></p>
             </Item.Description>
             <div className="property-buttons">
               <Button onClick={(e) => this.handleOpen(e, 'default' )} className="edit-btn" size="small" > <Icon link name='edit' />Edit</Button>

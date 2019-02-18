@@ -137,22 +137,21 @@ const fetchProperties = (propertiesData) => {
 }
 
 const updatingProperties = (propertyData) => {
-  return (dispatch) => {
-    // console.log(propertyData.id)
+  return dispatch => {
     fetch(`https://tinyhome-backend.herokuapp.com/api/v1/properties/${propertyData.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Accept: 'application/json'
       },
       body: JSON.stringify(propertyData)
     }).then(res => res.json())
-    .then(data => {
-      dispatch(updatedProperty(data))
-    })
+    .then(data => console.log(data))
   }
 }
 
 const updatedProperty = (propertyData) => {
+ 
   return {type: "UPDATE_PROPERTY", propertyData}
 }
 
