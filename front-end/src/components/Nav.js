@@ -164,6 +164,7 @@ class Nav extends Component {
               // to="/login"
               name="Login"
               onClick={this.handleOpen}
+              className="login-navbar"
               // active={pathname === "/login"}
             />
             }

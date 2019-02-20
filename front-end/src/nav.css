@@ -13,7 +13,8 @@ div.ui.huge.pointing.secondary.menu {
 
 .ui.secondary.pointing.menu .item {
   border-bottom-style: none;
-
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 }
 
 .logo {
@@ -22,6 +23,12 @@ div.ui.huge.pointing.secondary.menu {
   font-weight: 700;
   font-size: 1.1em
 
+}
+
+.login-navbar {
+
+  background-color: #E33258!important;
+  color: white !important;
 }
 
 .loginHeading {
