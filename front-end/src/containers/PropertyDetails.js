@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+import swal from 'sweetalert';
 
 import { Card, Image, Rating, Grid, Segment, Feed, GridColumn, Form, Button, Label, Breadcrumb, Header, Icon, Modal  } from 'semantic-ui-react'
 import '../propertyDetails.css'
@@ -42,7 +43,15 @@ class PropertyDetails extends Component {
   }
   
   handleOpen = () => {
-    this.setState({ modalOpen: true })
+    if(localStorage.getItem('currentUser')) {
+      this.setState({ modalOpen: true })	   
+    } else {
+      swal({
+        text: "Need to Login",
+        icon: "info",
+        button: "Ok",
+      });
+    }	    
   }
 
   handleClose = () => {
@@ -50,7 +59,6 @@ class PropertyDetails extends Component {
   } 
   
   startHandleChange = (date) => {
-    console.log(date)
     this.setState({
       startDate: date
     });
@@ -60,6 +68,30 @@ class PropertyDetails extends Component {
     this.setState({
       endDate: date
     });
+  }
+
+  sendMessage = () => {
+    if(localStorage.getItem('currentUser')) {
+      console.log('sending message')   
+    } else {
+      swal({
+        text: "Need to Login",
+        icon: "info",
+        button: "Ok",
+      });
+    }	    
+  }
+
+  addReview = () => {
+    if(localStorage.getItem('currentUser')) {
+      console.log('leaving a review')   
+    } else {
+      swal({
+        text: "Need to Login",
+        icon: "info",
+        button: "Ok",
+      });
+    }	    
   }
 
   componentDidMount() {
@@ -83,12 +115,6 @@ class PropertyDetails extends Component {
       })
     }
 
-    
-    // this.props.allUsers.find(user => {
-    //   if (user.id === tinyHomeObj.reviews[0].reviewer_id)
-    //     reviewerName = user.first_name
-    // })
-    
     return tinyHomeObj ? (
       <Fragment>
         <div className="bread-crumb">
@@ -202,7 +228,7 @@ class PropertyDetails extends Component {
                   </Feed.Event>
                 </Feed>
               </Card.Content>
-              <Button color='teal'>
+              <Button onClick={this.sendMessage} color='teal'>
                 Message Host
               </Button>
             </Card>
@@ -219,7 +245,7 @@ class PropertyDetails extends Component {
           </Grid.Column>
           <Grid.Column className="reviews-container" width={5}>
           <div className="review-div">
-          <Button basic color="blue" className="review-btn" floated='right'>+ Add Review</Button>
+          <Button onClick={this.addReview} basic color="blue" className="review-btn" floated='right'>+ Add Review</Button>
           <h2>Reviews</h2>
           <p><Rating icon='star' defaultRating={rating} maxRating={5} disabled /></p>
           <p>{tinyHomeObj.reviews[0].review_content} -  <Label as='a' image>
