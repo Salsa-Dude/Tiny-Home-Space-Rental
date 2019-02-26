@@ -54,46 +54,6 @@ class App extends Component {
   //     })
   // }
 
-  // setCurrentUser = (userObj) => {
-  //   this.setState({
-  //     currentUser: userObj
-  //   })
-  // }
-
-  // allTinyPlaces = (data) => {
-  //   this.setState({
-  //     allTinyPlaces: data
-  //   })
-  // }
-
-
-  // deleteTrip = (tripId) => {
-
-  //   console.log(this.state.allUsers)
-    
-  //   fetch(`https://tinyhome-backend.herokuapp.com/${tripId}`, {
-  //     method: "DELETE",
-  //   }).then(res => res.json())
-  //   .then(data => {
-      
-  //     console.log(this.state.allUsers)
-
-  //     let foundUser = this.state.allUsers.find(user => {
-  //       return user.id === this.state.currentUser.id
-  //     })
-
-  //     let test = foundUser.rentals.filter(rental => {
-  //       return rental.id !== data.id
-  //     })
-
-  //     let k = this.state.allUsers.filter(user => {
-  //       if(user.id === foundUser.id) {
-  //         return user.rentals = test
-  //       }
-  //     })
-
-  //   })
-  // }
 
   render() {  
     return (

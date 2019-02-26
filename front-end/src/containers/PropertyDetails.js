@@ -2,13 +2,15 @@ import React, { Component, Fragment } from 'react'
 import {connect} from 'react-redux'
 import {fetchingTinyHomes} from '../redux/actions'
 import {bookingLease} from '../redux/actions'
+import {addingReview} from '../redux/actions'
+import {fetchingReviews} from '../redux/actions'
 import { Link } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
 import swal from 'sweetalert';
 
-import { Card, Image, Rating, Grid, Segment, Feed, GridColumn, Form, Button, Label, Breadcrumb, Header, Icon, Modal  } from 'semantic-ui-react'
+import { Card, Image, Rating, Grid, Segment, Feed, GridColumn, Form, Button, Label, Breadcrumb, Header, Icon, Modal, TextArea } from 'semantic-ui-react'
 import '../propertyDetails.css'
 
 
@@ -17,10 +19,12 @@ class PropertyDetails extends Component {
     super(props)
 
     this.state = {
-      userFirstName: '',
       startDate: new Date(),
       endDate: new Date(),
-      modalOpen: false
+      modalOpen: false,
+      open: false,
+      rating: 1,
+      reviewContent: ''
     }
   }
 
@@ -41,6 +45,9 @@ class PropertyDetails extends Component {
     
     this.setState({ modalOpen: false })
   }
+
+  reviewChange = (e) => this.setState({reviewContent: e.target.value})
+  handleChange = e => this.setState({ rating: e.target.value })
   
   handleOpen = () => {
     if(localStorage.getItem('currentUser')) {
@@ -82,32 +89,61 @@ class PropertyDetails extends Component {
     }	    
   }
 
-  addReview = () => {
-    if(localStorage.getItem('currentUser')) {
-      console.log('leaving a review')   
-    } else {
+  postReview = () => {
+   let findHome = this.props.tinyHomes.find(tinyHome => {
+      return tinyHome.id == this.props.match.params.id
+    })
+
+    if(findHome.user_id == parseInt(localStorage.getItem('currentUser'))) {
+      this.setState({ 
+        open: false,
+        rating: 1, 
+        reviewContent: ''
+      })
       swal({
-        text: "Need to Login",
+        text: "Can't leave review on a property that you own",
         icon: "info",
         button: "Ok",
       });
-    }	    
+      return
+    } else {
+      let data = {
+        review_content: this.state.reviewContent,
+        rating: this.state.rating,
+        reviewer_id: parseInt(localStorage.getItem('currentUser')),
+        reviewee_id: findHome.user_id,
+        property_id: parseInt(this.props.match.params.id)
+      }
+      this.props.addReview(data)
+    }  
   }
+
+  show = (dimmer) => ()  => localStorage.getItem('currentUser') ? this.setState({ dimmer, open: true }) : swal({
+    text: "Need to Login",
+    icon: "info",
+    button: "Ok",
+  });
+
+  close = () => {
+    this.setState({ 
+      open: false,
+      rating: 1, 
+      reviewContent: ''
+    })
+  } 
 
   componentDidMount() {
     this.props.fetchTinyHomes()
+    this.props.fetchReviews()
   }
   
   render() {
     let tinyHomeObj
     let rating;
     let reviewerName;
+    const { open, dimmer } = this.state
     
- 
-   
-    // if(tinyHomeObj.reviews.length >= 1) {
-    //   rating = tinyHomeObj.reviews[0].rating
-    // }
+
 
     if(this.props) {
       tinyHomeObj = this.props.tinyHomes.find(tinyHome => {
@@ -218,7 +254,7 @@ class PropertyDetails extends Component {
                   <Feed.Event>
                     <Feed.Label>
                     <Image src='https://cdn.iconscout.com/icon/free/png-256/avatar-373-456325.png' />
-                    <span className="user-name">{this.state.userFirstName}</span>
+                    <span className="user-name">{tinyHomeObj.user.first_name}</span>
                     </Feed.Label>
                     <Feed.Content>
                       <Feed.Summary>
@@ -245,13 +281,45 @@ class PropertyDetails extends Component {
           </Grid.Column>
           <Grid.Column className="reviews-container" width={5}>
           <div className="review-div">
-          <Button onClick={this.addReview} basic color="blue" className="review-btn" floated='right'>+ Add Review</Button>
+          <Button onClick={this.show('blurring')} basic color="blue" className="review-btn" floated='right'>+ Add Review</Button>
+          <Modal dimmer={dimmer} open={open} onClose={this.close}>
+            <Modal.Header >Leave a Review</Modal.Header>
+              <Modal.Content image>
+                <Image wrapped size='medium' src={tinyHomeObj.image} />
+                <Modal.Description>
+                  <Header>{tinyHomeObj.name}</Header>
+                  <Form style={{ width: '400px'}}>
+                  <div className="rating-form">
+                    <div className="rating-form">Rating: {rating}</div>
+                    <input type='range' min={1} max={5} value={rating} onChange={this.handleChange} />
+                    <br />
+                    <Rating rating={this.state.rating} maxRating={5} />
+                  </div>
+                  <Form.Field style={{marginTop: "10px"}} rows='6' onChange={(e) => this.reviewChange(e)} control={TextArea}  placeholder='Leave a review' />
+                  </Form>
+                  <Button color="teal" style={{marginTop: "10px"}} onClick={this.postReview}>Leave Review</Button>
+                </Modal.Description> 
+              </Modal.Content>
+          
+          </Modal>
+          
+          
+          
           <h2>Reviews</h2>
-          <p><Rating icon='star' defaultRating={rating} maxRating={5} disabled /></p>
-          <p>{tinyHomeObj.reviews[0].review_content} -  <Label as='a' image>
-              <img src='https://react.semantic-ui.com/images/avatar/small/stevie.jpg' />
-              {reviewerName}
-              </Label> 
+          <p>
+            {this.props.reviews.map(review => {
+              if(review.property_id == this.props.match.params.id ) {
+                return (
+                  <div>
+                  <Rating icon='star' defaultRating={review.rating} maxRating={5} disabled />
+                  <span className="review-content">{review.review_content}</span> -  <Label as='a' image>
+                  <img src='https://react.semantic-ui.com/images/avatar/small/stevie.jpg' />
+                  
+                  </Label>
+                  </div>
+                )
+              }
+            })}
           </p>
           </div> 
           </Grid.Column>
@@ -266,14 +334,17 @@ class PropertyDetails extends Component {
 const mapStateToProps = (state) => {
   return {
     tinyHomes: state.tinyHomes,
-    leases: state.leases
+    leases: state.leases,
+    reviews: state.reviews
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchTinyHomes: () => {dispatch(fetchingTinyHomes())},
-    bookLease: (data) => {dispatch(bookingLease(data))}
+    bookLease: (data) => {dispatch(bookingLease(data))},
+    fetchReviews: () => {dispatch(fetchingReviews())},
+    addReview: (data) => {dispatch(addingReview(data))}
   }
   
 }

@@ -156,8 +156,44 @@ const updatedProperty = (propertyData) => {
 }
 
 
+//////////////// REVIEWS /////////////////////////////////////////
+
+const fetchingReviews= () => {
+  return (dispatch) => {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/reviews`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch(fetchReviews(data))
+      })
+  }
+}
+
+const fetchReviews = (reviewsData) => {
+  return {type: "FETCHED_REVIEWS", reviewsData }
+}
+
+
+const addingReview = (data) => {
+  return (dispatch) => {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/reviews`, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+    .then(data => {
+      console.log(data)
+      dispatch(addedReview(data))
+    })
+  }
+}
+
+const addedReview = (reviewData) => {
+  return {type: "ADD_REVIEW", reviewData}
+}
 
 
 
-
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, updatingLease, deletingLease}  
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, updatingLease, deletingLease, fetchingReviews, addingReview}  

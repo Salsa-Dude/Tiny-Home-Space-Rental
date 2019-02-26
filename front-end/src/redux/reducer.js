@@ -57,11 +57,23 @@ const propertyReducer = (state = [], action) => {
   }
 }
 
+const reviewReducer = (state = [], action) => {
+  switch(action.type) {
+    case "FETCHED_REVIEWS":
+      return action.reviewsData
+    case "ADD_REVIEW":
+      return [...state, action.reviewData]
+    default: 
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   tinyHomes: tinyHomesReducer,
   leases: leaseReducer,
   login: loginReducer,
-  properties: propertyReducer
+  properties: propertyReducer,
+  reviews: reviewReducer
 })
 
 export default rootReducer
