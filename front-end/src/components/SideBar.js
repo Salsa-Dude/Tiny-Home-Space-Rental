@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Header, Icon, Image, Menu, Segment, Sidebar, Form, Checkbox, Dropdown   } from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {fetchingTinyHomes} from '../redux/actions'
-import {ratingProperties} from '../redux/actions'
+import {ratingTinyHomes} from '../redux/actions'
+import {relevanceTinyHomes} from '../redux/actions'
 
 import '../sidebar.css'
 import Slider from 'react-rangeslider'
@@ -42,6 +43,10 @@ class SideBar extends Component {
 
     if (value === 'Ratings') {
       this.props.rateProperties(value)
+    }
+
+    if(value === 'Relevance') {
+      this.props.relevanceProperties()
     }
   } 
 
@@ -101,9 +106,9 @@ class SideBar extends Component {
             <Form.Field>
               <Checkbox
                 radio
-                label='Newest Arrivals'
+                label='Price'
                 name='checkboxRadioGroup'
-                value='Newest Arrivals'
+                value='Price'
                 checked={this.state.sortTerm === 'Newest Arrivals'}
                 onChange={this.handleSortChange}
               />
@@ -130,7 +135,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchHomes: () => {dispatch(fetchingTinyHomes())},
-    rateProperties: (term) => {dispatch(ratingProperties(term))}
+    rateProperties: (term) => {dispatch(ratingTinyHomes(term))},
+    relevanceProperties: () => {dispatch(relevanceTinyHomes())}
   }
 }
 

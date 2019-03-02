@@ -22,6 +22,12 @@ const tinyHomesReducer = (state = [], action) => {
         return a.reviews[0].rating - b.reviews[0].rating
       })
       return ratingTinyHomes.reverse()
+    case "RELEVANCE_PROPERTIES": 
+      let stateCopy = [...state]
+      let relevanceTinyHomes = stateCopy.sort((a,b) => {
+        return 0.5 - Math.random()
+      })
+      return relevanceTinyHomes
     default: 
       return state
   }

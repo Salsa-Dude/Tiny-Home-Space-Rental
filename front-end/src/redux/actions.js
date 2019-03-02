@@ -61,6 +61,19 @@ const fetchedTinyHomes = (tinyHomesData) => {
   return {type: "FETCHED_TINY_HOMES", tinyHomesData}
 }
 
+const ratingTinyHomes = (sortTerm) => {
+  console.log(sortTerm)
+  return {
+    type: "RATING_PROPERTIES", sortTerm
+  }
+}
+
+const relevanceTinyHomes = (data) => {
+  return {
+    type: "RELEVANCE_PROPERTIES", data
+  }
+}
+
 //////////////// LEASES /////////////////////////////////////////
 
 const fetchingLeases = () => {
@@ -155,12 +168,6 @@ const updatedProperty = (propertyData) => {
   return {type: "UPDATE_PROPERTY", propertyData}
 }
 
-const ratingProperties = (sortTerm) => {
-  console.log(sortTerm)
-  return {
-    type: "RATING_PROPERTIES", sortTerm
-  }
-}
 
 
 
@@ -205,4 +212,4 @@ const addedReview = (reviewData) => {
 
 
 
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingProperties, updatingLease, deletingLease, fetchingReviews, addingReview}  
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingTinyHomes, relevanceTinyHomes, updatingLease, deletingLease, fetchingReviews, addingReview}  
