@@ -74,6 +74,12 @@ const relevanceTinyHomes = (data) => {
   }
 }
 
+const priceTinyHomes = (data) => {
+  return {
+    type: "PRICE_PROPERTIES", data
+  }
+}
+
 //////////////// LEASES /////////////////////////////////////////
 
 const fetchingLeases = () => {
@@ -212,4 +218,4 @@ const addedReview = (reviewData) => {
 
 
 
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingTinyHomes, relevanceTinyHomes, updatingLease, deletingLease, fetchingReviews, addingReview}  
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingTinyHomes, relevanceTinyHomes, priceTinyHomes, updatingLease, deletingLease, fetchingReviews, addingReview}  

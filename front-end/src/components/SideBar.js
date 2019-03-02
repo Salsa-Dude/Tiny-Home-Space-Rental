@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {fetchingTinyHomes} from '../redux/actions'
 import {ratingTinyHomes} from '../redux/actions'
 import {relevanceTinyHomes} from '../redux/actions'
+import {priceTinyHomes} from '../redux/actions'
 
 import '../sidebar.css'
 import Slider from 'react-rangeslider'
@@ -48,6 +49,12 @@ class SideBar extends Component {
     if(value === 'Relevance') {
       this.props.relevanceProperties()
     }
+
+    if(value === 'Price') {
+      this.props.priceProperties()
+    }
+
+
   } 
 
   render() {
@@ -109,7 +116,7 @@ class SideBar extends Component {
                 label='Price'
                 name='checkboxRadioGroup'
                 value='Price'
-                checked={this.state.sortTerm === 'Newest Arrivals'}
+                checked={this.state.sortTerm === 'Price'}
                 onChange={this.handleSortChange}
               />
             </Form.Field>
@@ -136,7 +143,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchHomes: () => {dispatch(fetchingTinyHomes())},
     rateProperties: (term) => {dispatch(ratingTinyHomes(term))},
-    relevanceProperties: () => {dispatch(relevanceTinyHomes())}
+    relevanceProperties: () => {dispatch(relevanceTinyHomes())},
+    priceProperties: () => {dispatch(priceTinyHomes())}
   }
 }
 

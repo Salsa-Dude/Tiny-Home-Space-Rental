@@ -28,6 +28,12 @@ const tinyHomesReducer = (state = [], action) => {
         return 0.5 - Math.random()
       })
       return relevanceTinyHomes
+    case "PRICE_PROPERTIES": 
+      let copyState = [...state]
+      let priceTinyHomes = copyState.sort((a,b) => {
+        return a.price - b.price
+      })
+      return priceTinyHomes
     default: 
       return state
   }
