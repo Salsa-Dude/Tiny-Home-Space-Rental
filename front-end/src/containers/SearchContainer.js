@@ -20,6 +20,10 @@ class SearchContainer extends Component {
    
   }
 
+  test = () => {
+    console.log('testing')
+  }
+
   render() {
 
     const dcInfo = {
@@ -40,11 +44,11 @@ class SearchContainer extends Component {
       tiny: true
     }
 
-    console.log(this.props.tinyHomes,'hello')
+   
     
     return (
       <Fragment>
-      <SideBar />
+      <SideBar test={this.test}/>
       <div className="search-greeting">
         <h2>Travel the United States with your Tiny Home </h2>
         <div className="search-info">
@@ -69,7 +73,9 @@ class SearchContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  return {tinyHomes: state.tinyHomes}
+  return {
+    tinyHomes: state.tinyHomes
+  }
 }
 
 const mapDispatchToProps = dispatch => {

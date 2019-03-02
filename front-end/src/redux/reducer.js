@@ -16,6 +16,12 @@ const tinyHomesReducer = (state = [], action) => {
   switch(action.type) {
     case "FETCHED_TINY_HOMES":
       return action.tinyHomesData
+    case "RATING_PROPERTIES":
+      let tinyHomesCopy = [...state]
+      let ratingTinyHomes = tinyHomesCopy.sort((a,b) => {
+        return a.reviews[0].rating - b.reviews[0].rating
+      })
+      return ratingTinyHomes.reverse()
     default: 
       return state
   }
@@ -39,7 +45,6 @@ const leaseReducer = (state = [], action) => {
 }
 
 const propertyReducer = (state = [], action) => {
-  console.log(action)
   switch(action.type) {
     case "FETCHED_PROPERTIES":
       return action.propertiesData

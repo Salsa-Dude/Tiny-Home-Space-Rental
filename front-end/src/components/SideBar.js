@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { Header, Icon, Image, Menu, Segment, Sidebar, Form, Checkbox, Dropdown   } from 'semantic-ui-react'
+import {connect} from 'react-redux'
+import {fetchingTinyHomes} from '../redux/actions'
+import {ratingProperties} from '../redux/actions'
+
 import '../sidebar.css'
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'  
@@ -11,27 +15,35 @@ class SideBar extends Component {
     super()
     this.state = {
       value: 50,
-      sortTerm: "Relevance"
+      sortTerm: "Relevance",
     }
   }
 
   handleChangeStart = () => {
     console.log('Change event started')
+    
   };
 
   handleChange = value => {
     this.setState({
       value: value
     })
+
   };
 
   handleChangeComplete = () => {
     console.log('Change event completed')
   };
 
-  handleSortChange = (e, { value }) => this.setState({
-    sortTerm: value
-  })
+  handleSortChange = (e, { value }) => {
+    this.setState({
+      sortTerm: value
+    })
+
+    if (value === 'Ratings') {
+      this.props.rateProperties(value)
+    }
+  } 
 
   render() {
     const { value } = this.state
@@ -111,4 +123,15 @@ class SideBar extends Component {
   }
 }
 
-export default SideBar;
+const mapStateToProps = state => {
+  return {tinyHomes: state.tinyHomes}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchHomes: () => {dispatch(fetchingTinyHomes())},
+    rateProperties: (term) => {dispatch(ratingProperties(term))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

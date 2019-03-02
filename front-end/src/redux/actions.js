@@ -155,6 +155,15 @@ const updatedProperty = (propertyData) => {
   return {type: "UPDATE_PROPERTY", propertyData}
 }
 
+const ratingProperties = (sortTerm) => {
+  console.log(sortTerm)
+  return {
+    type: "RATING_PROPERTIES", sortTerm
+  }
+}
+
+
+
 
 //////////////// REVIEWS /////////////////////////////////////////
 
@@ -196,4 +205,4 @@ const addedReview = (reviewData) => {
 
 
 
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, updatingLease, deletingLease, fetchingReviews, addingReview}  
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingProperties, updatingLease, deletingLease, fetchingReviews, addingReview}  
