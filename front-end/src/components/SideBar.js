@@ -5,6 +5,7 @@ import {fetchingTinyHomes} from '../redux/actions'
 import {ratingTinyHomes} from '../redux/actions'
 import {relevanceTinyHomes} from '../redux/actions'
 import {priceTinyHomes} from '../redux/actions'
+import {stateTinyHomes} from '../redux/actions'
 
 import '../sidebar.css'
 import Slider from 'react-rangeslider'
@@ -53,9 +54,17 @@ class SideBar extends Component {
     if(value === 'Price') {
       this.props.priceProperties()
     }
-
-
   } 
+
+  stateChange = (e) => {
+    let stateName = e.currentTarget.children[0].innerText
+
+    if (stateName !== "Select All") {
+      this.props.stateProperties(stateName)
+    } else {
+      this.props.fetchHomes()
+    }
+ }
 
   render() {
     const { value } = this.state
@@ -126,7 +135,7 @@ class SideBar extends Component {
       <Menu.Item>
         <div className="state-item">
           <span className="location-span">Location:</span>
-          <Dropdown placeholder='Select choice' scrolling options={stateOptions} />
+          <Dropdown placeholder='Select All' scrolling options={stateOptions} onChange={ (e) => this.stateChange(e)} />
         </div>
       </Menu.Item>
     </Sidebar>
@@ -144,7 +153,8 @@ const mapDispatchToProps = dispatch => {
     fetchHomes: () => {dispatch(fetchingTinyHomes())},
     rateProperties: (term) => {dispatch(ratingTinyHomes(term))},
     relevanceProperties: () => {dispatch(relevanceTinyHomes())},
-    priceProperties: () => {dispatch(priceTinyHomes())}
+    priceProperties: () => {dispatch(priceTinyHomes())},
+    stateProperties: (data) => {dispatch(stateTinyHomes(data))}
   }
 }
 

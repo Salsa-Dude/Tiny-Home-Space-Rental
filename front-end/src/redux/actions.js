@@ -62,7 +62,6 @@ const fetchedTinyHomes = (tinyHomesData) => {
 }
 
 const ratingTinyHomes = (sortTerm) => {
-  console.log(sortTerm)
   return {
     type: "RATING_PROPERTIES", sortTerm
   }
@@ -78,6 +77,20 @@ const priceTinyHomes = (data) => {
   return {
     type: "PRICE_PROPERTIES", data
   }
+}
+
+const stateTinyHomes = (stateData) => {
+  return (dispatch) => {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/properties`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch(getStateTinyHomes(data , stateData))
+      })
+  }
+}
+
+const getStateTinyHomes = (tinyHomesData, stateData) => {
+  return {type: "STATE_PROPERTIES", tinyHomesData, stateData}
 }
 
 //////////////// LEASES /////////////////////////////////////////
@@ -170,7 +183,6 @@ const updatingProperties = (propertyData) => {
 }
 
 const updatedProperty = (propertyData) => {
- 
   return {type: "UPDATE_PROPERTY", propertyData}
 }
 
@@ -218,4 +230,4 @@ const addedReview = (reviewData) => {
 
 
 
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingTinyHomes, relevanceTinyHomes, priceTinyHomes, updatingLease, deletingLease, fetchingReviews, addingReview}  
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingTinyHomes, relevanceTinyHomes, priceTinyHomes, stateTinyHomes, updatingLease, deletingLease, fetchingReviews, addingReview}  
