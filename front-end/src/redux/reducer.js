@@ -34,13 +34,19 @@ const tinyHomesReducer = (state = [], action) => {
         return a.price - b.price
       })
       return priceTinyHomes
-      case "STATE_PROPERTIES": 
+    case "STATE_PROPERTIES": 
       let copyTwo = [...action.tinyHomesData]
      
        let findState = copyTwo.filter(property => {
          return property.state === action.stateData
        })
        return findState
+    case "FILTER_PRICE_PROPERTIES":
+       let copyThree = [...action.tinyHomesData]
+       let filterPrice = copyThree.filter(property => {
+         return property.price > action.priceData
+       })
+       return filterPrice
     default: 
       return state
   }

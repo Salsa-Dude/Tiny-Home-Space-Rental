@@ -93,6 +93,20 @@ const getStateTinyHomes = (tinyHomesData, stateData) => {
   return {type: "STATE_PROPERTIES", tinyHomesData, stateData}
 }
 
+const fetchPriceTinyHomes = (priceData) => {
+  return (dispatch) => {
+    fetch(`https://tinyhome-backend.herokuapp.com/api/v1/properties`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch(getPriceTinyHomes(data , priceData))
+      })
+  }
+}
+
+const getPriceTinyHomes = (tinyHomesData, priceData) => {
+  return {type: "FILTER_PRICE_PROPERTIES", tinyHomesData, priceData}
+}
+
 //////////////// LEASES /////////////////////////////////////////
 
 const fetchingLeases = () => {
@@ -230,4 +244,4 @@ const addedReview = (reviewData) => {
 
 
 
-export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingTinyHomes, relevanceTinyHomes, priceTinyHomes, stateTinyHomes, updatingLease, deletingLease, fetchingReviews, addingReview}  
+export { loggingIn, loggingOut, fetchingTinyHomes, bookingLease, fetchingLeases, fetchingProperties, updatingProperties, ratingTinyHomes, relevanceTinyHomes, priceTinyHomes, stateTinyHomes, updatingLease, deletingLease, fetchingReviews, addingReview, fetchPriceTinyHomes}  

@@ -6,6 +6,7 @@ import {ratingTinyHomes} from '../redux/actions'
 import {relevanceTinyHomes} from '../redux/actions'
 import {priceTinyHomes} from '../redux/actions'
 import {stateTinyHomes} from '../redux/actions'
+import {fetchPriceTinyHomes} from '../redux/actions'
 
 import '../sidebar.css'
 import Slider from 'react-rangeslider'
@@ -35,7 +36,8 @@ class SideBar extends Component {
   };
 
   handleChangeComplete = () => {
-    console.log('Change event completed')
+    let priceValue = this.state.value
+    this.props.getPriceProperties(priceValue)
   };
 
   handleSortChange = (e, { value }) => {
@@ -154,7 +156,8 @@ const mapDispatchToProps = dispatch => {
     rateProperties: (term) => {dispatch(ratingTinyHomes(term))},
     relevanceProperties: () => {dispatch(relevanceTinyHomes())},
     priceProperties: () => {dispatch(priceTinyHomes())},
-    stateProperties: (data) => {dispatch(stateTinyHomes(data))}
+    stateProperties: (data) => {dispatch(stateTinyHomes(data))},
+    getPriceProperties: (data) => {dispatch(fetchPriceTinyHomes(data))}
   }
 }
 
