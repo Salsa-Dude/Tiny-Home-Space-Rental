@@ -59,7 +59,7 @@ class MyPropertyCard extends Component {
     })
 
     swal({
-      text: "Course has been updated!",
+      text: "Property has been updated!",
       icon: "success",
       button: "Ok",
     });

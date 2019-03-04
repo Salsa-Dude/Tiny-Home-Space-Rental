@@ -125,6 +125,7 @@ const fetchLeases = (leasesData) => {
 
 
 const bookingLease = (data) => {
+  console.log(data)
   return (dispatch) => {
     fetch(`https://tinyhome-backend.herokuapp.com/api/v1/leases`, {
       method: 'POST',
