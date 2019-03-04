@@ -44,6 +44,12 @@ class PropertyDetails extends Component {
     this.props.bookLease(leaseData)
     
     this.setState({ modalOpen: false })
+
+    swal({
+      text: "Trip confirmed",
+      icon: "success",
+      button: "Ok",
+    });
   }
 
   reviewChange = (e) => this.setState({reviewContent: e.target.value})
@@ -115,6 +121,12 @@ class PropertyDetails extends Component {
         property_id: parseInt(this.props.match.params.id)
       }
       this.props.addReview(data)
+
+      this.setState({ 
+        open: false,
+        rating: 1, 
+        reviewContent: ''
+      })
     }  
   }
 

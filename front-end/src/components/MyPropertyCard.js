@@ -5,6 +5,7 @@ import { Card, Image, Rating, Icon, Button, Header, Modal, Form, Item, Divider }
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+import swal from 'sweetalert';
 
 
 class MyPropertyCard extends Component {
@@ -56,6 +57,12 @@ class MyPropertyCard extends Component {
       propertyNotes: this.state.propertyNotes,
       propertyPrice: this.state.propertyPrice
     })
+
+    swal({
+      text: "Course has been updated!",
+      icon: "success",
+      button: "Ok",
+    });
   }
 
   nameChange = (e) => {

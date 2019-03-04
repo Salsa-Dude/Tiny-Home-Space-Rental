@@ -6,6 +6,7 @@ import { Card, Image, Rating, Icon, Button, Header, Modal, Form } from 'semantic
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from 'moment';
+import swal from 'sweetalert';
 
 
 import '../tripContainer.css'
@@ -55,6 +56,12 @@ class TripCard extends Component {
 
     this.props.trip.checkin = this.state.startDate
     this.props.trip.checkout = this.state.endDate
+
+    swal({
+      text: "Trip has been updated!",
+      icon: "success",
+      button: "Ok",
+    });
   }
 
   show = dimmer => () => this.setState({ dimmer, open: true })
