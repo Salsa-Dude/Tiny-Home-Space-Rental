@@ -39,7 +39,7 @@ div.ui.huge.pointing.secondary.menu {
   background-color: #E33258!important;
 }
 
-.test-message {
+.guest-message {
   width: 90%;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -48,5 +48,9 @@ div.ui.huge.pointing.secondary.menu {
   padding-top: 20px !important;
   padding-bottom: 20px !important;
   
+}
+
+.guest-message p {
+  font-size: 15.5px;
 }
 

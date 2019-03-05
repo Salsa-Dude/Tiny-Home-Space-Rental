@@ -12,8 +12,8 @@ Lease.destroy_all
 Review.destroy_all
 Message.destroy_all
 
-#**** TESTING ACCOUNT ************************
-@Diana = User.create!(first_name: "Diana", last_name: "Gonzales", email: "test", password: "test", username: "test", bio: "Student and Mom of 4 dogs")
+#**** GUEST ACCOUNT ************************
+@Diana = User.create!(first_name: "Diana", last_name: "Gonzales", email: "guest@guest.com", password: "guest", username: "guest", bio: "Student and Mom of 4 dogs")
 # ********************************************
 
 @Joseph = User.create!(first_name: "Joseph", last_name: "Arias", email: "arias.joseph.a@gmail.com", password: "123", username: "jarias3", bio: "I like playing soccer and tacos")

@@ -81,7 +81,8 @@ class Nav extends Component {
     }
     
     const loginModal = {
-      width: '30rem'
+      width: '35rem'
+
     }
     
     const loginBtn = {
@@ -174,8 +175,8 @@ class Nav extends Component {
             <div style={loginContainer}>
               <div className="loginHeading">
                 <h3>Login In to Your TinyHome Account</h3>
-                <Message className="test-message">
-                <p>Sign in with email 'test' and password 'test' to demo the app. Or, create an account below.</p>
+                <Message className="guest-message">
+                <p>Sign in with email 'guest@guest.com' and password 'guest' to demo the app. Or, create an account below.</p>
                 </Message>
                 
               </div>
