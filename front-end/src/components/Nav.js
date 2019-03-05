@@ -174,6 +174,7 @@ class Nav extends Component {
             <div style={loginContainer}>
               <div className="loginHeading">
                 <h3>Login In to Your TinyHome Account</h3>
+                <p></p>
               </div>
               <Divider />
               <Form
