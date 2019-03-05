@@ -174,7 +174,10 @@ class Nav extends Component {
             <div style={loginContainer}>
               <div className="loginHeading">
                 <h3>Login In to Your TinyHome Account</h3>
-                <p></p>
+                <Message className="test-message">
+                <p>Sign in with email 'test' and password 'test' to demo the app. Or, create an account below.</p>
+                </Message>
+                
               </div>
               <Divider />
               <Form

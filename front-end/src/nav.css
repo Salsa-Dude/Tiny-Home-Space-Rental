@@ -39,3 +39,11 @@ div.ui.huge.pointing.secondary.menu {
   background-color: #E33258!important;
 }
 
+.test-message {
+  width: 90%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 20px !important;
+  
+}
+
