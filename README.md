@@ -6,5 +6,5 @@ Tiny Home Parkway is a online community marketplace for people to list, discover
 + Utilized JSON web tokens and localStorage to store encrypted user information client-side
 
 Guest Login <br>
-email: test <br>
-password: test
+email: guest@guest.com <br>
+password: guest
